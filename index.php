@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="content/css/bootstrap.css">
     <link rel="stylesheet" href="content/css/styles.css">
-    <script src="app/lib/angular.min"></script>
     <title>Document</title>
 </head>
 
