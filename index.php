@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="content/css/bootstrap.css">
     <link rel="stylesheet" href="content/css/styles.css">
-    <title>Document</title>
+    <title>Sigma Clone</title>
 </head>
 
 <body>
