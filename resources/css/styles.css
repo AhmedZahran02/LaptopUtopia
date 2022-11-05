@@ -1,0 +1,41 @@
+.img-2{
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    opacity: 0;
+    display: block;
+    transition: all 0.5s ease-in-out;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.img-1{
+    opacity: 1;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+a{
+    background-color: transparent;
+    color: #555;
+    transition: color 0.3s ease-in-out;    
+}
+
+a, a:visited, a:active, a:link, a:focus {
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+.img-responsive {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-2:hover{
+    opacity: 1;
+    transform-style: inherit;
+    transition: all 0.5s ease-in-out; 
+}
+
