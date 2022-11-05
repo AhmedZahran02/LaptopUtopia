@@ -16,9 +16,12 @@
             target="_self"
             title="NOTEBOOK-LENOVO-CI5-LEGION 5-(82JH006WAX) I5-11400H (6C/12T)-RAM 16G (2*8)-SSD 1T Gen4+(M.2)-RTX3060 6G 130w-15.6-FHD-IP">
             <img src="resources/img/a.webp" class="img-1 img-responsive" alt="image1">
-            <img src="resources/img/a.webp" class="img-2 img-responsive" alt="image2">
         </a>
     </div>
+    <svg width="279" height="184" style="position: absolute;">
+        <rect position="absolute" width="100%" height="100%" class="lineRect" fill="none" stroke="#ABB0B6"
+            stroke-width="1" stroke-dasharray="5, 5" opacity="1"></rect>
+    </svg>
 </body>
 
 </html>
