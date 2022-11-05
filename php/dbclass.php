@@ -34,9 +34,7 @@ class Database
     {
         $this->connect = mysqli_connect($this->hostName, $this->userName, $this->password, $this->database);
         if ($this->connect->connect_errno) {
-            return "Failed to connect to MySQL: " . $this->connect->connect_error;
-        } else {
-            return "connected";
+            die("Failed to connect to MySQL: " . $this->connect->connect_error);
         }
     }
     public function query($query)
