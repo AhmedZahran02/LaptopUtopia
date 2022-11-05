@@ -12,6 +12,7 @@
 
 <body>
     <?php echo "test" ?>
+    <?php echo "Hona Yarkood Al 3adol"?>
 </body>
 
 </html>
