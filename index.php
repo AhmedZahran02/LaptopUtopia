@@ -24,8 +24,10 @@
             stroke-width="1" stroke-dasharray="5, 5" opacity="1"></rect>
     </svg>
 
+    <?php 
+     echo "LOOOOOOOOL";
+    ?>
 
-    <?php echo "Hona Yarkod El 3dol" ?>
 
 </body>
 
