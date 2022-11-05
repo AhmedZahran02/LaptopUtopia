@@ -25,7 +25,7 @@
     </svg>
 
 
-    <?php echo "Hona Yarkod El 3dol" ?>
+    <?php echo "Hona Yarkod El Malook" ?>
 
 </body>
 
