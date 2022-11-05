@@ -24,8 +24,14 @@
             stroke-width="1" stroke-dasharray="5, 5" opacity="1"></rect>
     </svg>
 
+    <?php 
+     echo "LOOOOOOOOL";
+    ?>
 
+<<<<<<< HEAD
     <?php echo "Hona Yarkod El Malek" ?>
+=======
+>>>>>>> cd48d48b2db486e8c954e863391dd1b17a8a3d32
 
 </body>
 
