@@ -1,6 +1,6 @@
 .img-2{
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     top: 0;
     opacity: 0;
     display: block;
@@ -9,7 +9,10 @@
     transform: translateX(-50%);
 }
 .img-1{
-    opacity: 1;
+    position: absolute;
+    top: 0;
+    display: block;
+    opacity: 0.8;
     position: relative;
     transition: all 0.5s ease-in-out;
 }
@@ -36,6 +39,6 @@ a, a:visited, a:active, a:link, a:focus {
 .img-2:hover{
     opacity: 1;
     transform-style: inherit;
-    transition: all 0.5s ease-in-out; 
+    transition: all 0.5s ease-in-out;
 }
 
