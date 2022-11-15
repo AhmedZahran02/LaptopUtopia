@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS laptopia;
 USE laptopia;
 
@@ -19,7 +18,7 @@ IF NOT EXISTS `brand`
   `name` varchar (255) DEFAULT NULL,
   `WorkField` int NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY(WorkField) REFERENCES WorkField(id)
+  FOREIGN KEY(WorkField) REFERENCES WorkField(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 
