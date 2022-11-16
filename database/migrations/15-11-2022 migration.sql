@@ -25,7 +25,15 @@ CREATE TABLE
         `city` varchar (255) DEFAULT NULL,
         `street` varchar (255) DEFAULT NULL,
         `housenumber` int DEFAULT NULL,
-        PRIMARY KEY (username)
+        `cartid` int NOT NULL,
+        `wishlistid` int NOT NULL,
+        PRIMARY KEY (username),
+        FOREIGN KEY (cartid) REFERENCES cart(id) on DELETE
+        SET
+            NULL on UPDATE CASCADE,
+            FOREIGN KEY (wishlistid) REFERENCES wishlist(id) on DELETE
+        SET
+            NULL on UPDATE CASCADE
     );
 
 DROP TABLE IF EXISTS `admin`;
@@ -147,4 +155,108 @@ CREATE TABLE
         FOREIGN KEY (gpuid) REFERENCES gpu(mid) ON DELETE NO ACTION ON UPDATE CASCADE,
         FOREIGN KEY (ramid) REFERENCES ram(mid) ON DELETE NO ACTION ON UPDATE CASCADE,
         FOREIGN KEY (storageid) REFERENCES storage(mid) ON DELETE NO ACTION ON UPDATE CASCADE
+    );
+
+DROP TABLE IF EXISTS `wishlist`;
+
+CREATE TABLE
+    IF NOT EXISTS `wishlist` (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `lastmodificationdate` DATE DEFAULT NULL,
+        PRIMARY KEY (id)
+    );
+
+DROP TABLE IF EXISTS `wishlistitem`;
+
+CREATE TABLE
+    IF NOT EXISTS `wishlistitem` (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `productid` VARCHAR(50) NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (id) REFERENCES wishlist(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        FOREIGN KEY (productid) REFERENCES product(mid) ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+DROP TABLE IF EXISTS `cart`;
+
+CREATE TABLE
+    IF NOT EXISTS `cart` (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `currentprice` FLOAT NOT NULL DEFAULT 0,
+        `lastmodificationdate` DATE DEFAULT NULL,
+        PRIMARY KEY (id)
+    );
+
+DROP TABLE IF EXISTS `cartitem`;
+
+CREATE TABLE
+    IF NOT EXISTS `cartitem` (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `productid` VARCHAR(50) NOT NULL,
+        `quantity` int NOT NULL DEFAULT 1,
+        PRIMARY KEY (id),
+        FOREIGN KEY (id) REFERENCES wishlist(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        FOREIGN KEY (productid) REFERENCES product(mid) ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+DROP TABLE IF EXISTS `review`;
+
+CREATE TABLE
+    IF NOT EXISTS `review` (
+        `customerid` VARCHAR(50) NOT NULL,
+        `productid` varchar(50) NOT NULL,
+        `date` DATE NOT NULL,
+        `comment` VARCHAR(500) NOT NULL,
+        `rating` FLOAT NOT NULL,
+        PRIMARY KEY (customerid, productid),
+        FOREIGN KEY (productid) REFERENCES product(mid) ON DELETE CASCADE ON UPDATE CASCADE,
+        FOREIGN KEY (customerid) REFERENCES customer(username) ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+DROP TABLE IF EXISTS `complaint`;
+
+CREATE TABLE
+    IF NOT EXISTS `complaint` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `customerid` VARCHAR(50) NOT NULL,
+        `date` DATE NOT NULL,
+        `question` VARCHAR(500) NOT NULL,
+        `anwser` VARCHAR(500) DEFAULT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (customerid) REFERENCES customer(id) ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+DROP TABLE IF EXISTS `signinlog`;
+
+CREATE TABLE
+    IF NOT EXISTS `signinlog` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `customerid` VARCHAR(50) NOT NULL,
+        `date` DATE NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (customerid) REFERENCES customer(username) ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+DROP TABLE IF EXISTS `ordermain`;
+
+CREATE TABLE
+    IF NOT EXISTS `ordermain` (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `customerusername` VARCHAR(50) NOT NULL,
+        `totalprice` FLOAT NOT NULL DEFAULT 0,
+        `creationdate` DATE DEFAULT NULL,
+        PRIMARY KEY (id)
+    );
+
+DROP TABLE IF EXISTS `orderitem`;
+
+CREATE TABLE
+    IF NOT EXISTS `orderitem` (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `orderid` int NOT NULL,
+        `productid` VARCHAR(50) NOT NULL,
+        `quantity` int NOT NULL DEFAULT 1,
+        PRIMARY KEY (id),
+        FOREIGN KEY (orderid) REFERENCES ordermain(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        FOREIGN KEY (productid) REFERENCES product(mid) ON DELETE CASCADE ON UPDATE CASCADE
     );
