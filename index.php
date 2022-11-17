@@ -28,10 +28,8 @@
      echo "LOOOOOOOOL";
     ?>
 
-<<<<<<< HEAD
     <?php echo "Hona Yarkod El Malek" ?>
-=======
->>>>>>> cd48d48b2db486e8c954e863391dd1b17a8a3d32
+
 
     <?php echo "why i'm still here"?>
 
