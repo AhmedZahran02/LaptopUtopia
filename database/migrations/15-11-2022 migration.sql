@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS `laptopia`;
+
 CREATE DATABASE IF NOT EXISTS laptopia;
 
 USE laptopia;
@@ -64,6 +66,7 @@ CREATE TABLE
         `price` int DEFAULT NULL,
         `quantity` int DEFAULT NULL,
         `imageurls` varchar (500) DEFAULT NULL,
+        `discount` float DEFAULT 0,
         PRIMARY KEY (mid),
         FOREIGN KEY(brandname) REFERENCES brand(name) on UPDATE CASCADE on DELETE
         SET
@@ -219,11 +222,13 @@ CREATE TABLE
     IF NOT EXISTS `complaint` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `customerid` VARCHAR(50) NOT NULL,
+        `adminid` VARCHAR(50) DEFAULT NULL,
         `date` DATE NOT NULL,
         `question` VARCHAR(500) NOT NULL,
         `anwser` VARCHAR(500) DEFAULT NULL,
         PRIMARY KEY (id),
-        FOREIGN KEY (customerid) REFERENCES customer(id) ON DELETE CASCADE ON UPDATE CASCADE
+        FOREIGN KEY (customerid) REFERENCES customer(username) ON DELETE CASCADE ON UPDATE CASCADE,
+        FOREIGN KEY (adminid) REFERENCES admin(username) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
 DROP TABLE IF EXISTS `signinlog`;
@@ -237,10 +242,10 @@ CREATE TABLE
         FOREIGN KEY (customerid) REFERENCES customer(username) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
-DROP TABLE IF EXISTS `ordermain`;
+DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE
-    IF NOT EXISTS `ordermain` (
+    IF NOT EXISTS `order` (
         `id` int NOT NULL AUTO_INCREMENT,
         `customerusername` VARCHAR(50) NOT NULL,
         `totalprice` FLOAT NOT NULL DEFAULT 0,
@@ -257,6 +262,6 @@ CREATE TABLE
         `productid` VARCHAR(50) NOT NULL,
         `quantity` int NOT NULL DEFAULT 1,
         PRIMARY KEY (id),
-        FOREIGN KEY (orderid) REFERENCES ordermain(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        FOREIGN KEY (orderid) REFERENCES `order`(id) ON DELETE CASCADE ON UPDATE CASCADE,
         FOREIGN KEY (productid) REFERENCES product(mid) ON DELETE CASCADE ON UPDATE CASCADE
     );
