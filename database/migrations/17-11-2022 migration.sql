@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2022 at 09:43 AM
+-- Generation Time: Nov 17, 2022 at 09:46 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -495,7 +495,7 @@ ALTER TABLE `cpu`
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`cartid`) REFERENCES `cart` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`cartid`) REFERENCES `cart` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `customer_ibfk_2` FOREIGN KEY (`wishlistid`) REFERENCES `wishlist` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
