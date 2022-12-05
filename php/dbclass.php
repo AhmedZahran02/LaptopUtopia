@@ -1,4 +1,7 @@
 <?php
+
+header('Header-Type: application/json');
+header('Access-Control-Allow-OriginL *');
 class Database
 {
     private $userName;
@@ -23,7 +26,7 @@ class Database
     {
         $this->database = $database;
     }
-    public  function __construct($userName = "root", $password = "", $hostName = "localhost", $database)
+    public  function __construct($userName = "root", $password = "", $hostName = "localhost", $database = "laptopia")
     {
         $this->setUserName($userName);
         $this->setPassword($password);
