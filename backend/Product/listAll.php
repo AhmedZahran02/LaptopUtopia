@@ -19,6 +19,8 @@ if (isset($_GET['workField'])) {
     $respond = json_encode($respond);
 
     echo $respond;
+    $mydb->freeResult();
+    $mydb->disconnect();
 
     return $respond;
 }
