@@ -2,6 +2,7 @@
 
 header('Header-Type: application/json');
 header('Access-Control-Allow-OriginL *');
+header('Access-Control-Allow-Origin: *');
 class Database
 {
     private $userName;
