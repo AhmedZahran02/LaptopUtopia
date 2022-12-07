@@ -6,7 +6,7 @@ if (isset($_GET['username']) && isset($_GET['password']) && isset($_GET['isAdmin
 {
     $user = $_GET['username'];
     $pass = $_GET['password'];
-    $table = $_GET['isAdmin'] == 0 ? "user" : "admin" ;
+    $table = $_GET['isAdmin'] == 0 ? "customer" : "admin" ;
 
     $query = "SELECT * FROM " . $table . " WHERE username = " . $user . " AND password = " . $pass;
 
