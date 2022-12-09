@@ -10,7 +10,6 @@ if (isset($_GET['username']) && isset($_GET['password']) && isset($_GET['isAdmin
 
     $query = "SELECT * FROM " . $table . " WHERE username = '" . $user . "' AND password = '" . $pass . "'";
 
-
     $mydb->connect();
     $result = $mydb->query($query);
     
