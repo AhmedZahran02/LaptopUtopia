@@ -3,19 +3,19 @@ include '../../php/dbclass.php';
 $mydb = new Database();
 
 
-$table = $_POST['isAdmin'] == 0 ? "customer" : "admin";
-$username = $_POST['username'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$phone = $_POST['phone'];
-$dateofbirth = $_POST['dateofbirth'];
-$city = $_POST['city'];
-$street = $_POST['street'];
-$housnumber = $_POST['housnumber'];
-$cartid = $_POST['cartid'];
-$wishlistid = $_POST['wishlistid'];
+$table = $_GET['isAdmin'] == 0 ? "customer" : "admin";
+$username = $_GET['username'];
+$firstname = $_GET['firstname'];
+$lastname = $_GET['lastname'];
+$email = $_GET['email'];
+$password = $_GET['password'];
+$phone = $_GET['phone'];
+$dateofbirth = $_GET['dateofbirth'];
+$city = $_GET['city'];
+$street = $_GET['street'];
+$housenumber = $_GET['housenumber'];
+$cartid = $_GET['cartid'];
+$wishlistid = $_GET['wishlistid'];
 
 
     /*
@@ -27,8 +27,7 @@ $wishlistid = $_POST['wishlistid'];
     
     
     
-    
-    $query = "insert into ". $table. "values"."('".$username."',' ".$firstname."','".$lastname."','".$email."','".$password."','".$phone."','".$dateofbirth."','".$city."','".$street."','".$housenumber."','".$cartid."','".$wishlistid."');";
+    $query = "insert into ". $table. " values "."('".$username."',' ".$firstname."','".$lastname."','".$email."','".$password."','".$phone."','".$dateofbirth."','".$city."','".$street."','".$housenumber."','".$cartid."','".$wishlistid."');";
 
 
     $mydb->connect();
