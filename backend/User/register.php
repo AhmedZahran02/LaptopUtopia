@@ -34,11 +34,10 @@ $wishlistid = $_GET['wishlistid'];
     $result = $mydb->query($query);
     
 
-    $respond = [["Found"=>0]];
+    $respond = [];
 
-    while ($row = $result->fetch_assoc())
+    if ($row = $result->fetch_assoc())
     {
-        $respond[0]["Found"] = 1;
         array_push($respond, $row);
     }
 
