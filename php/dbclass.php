@@ -51,7 +51,9 @@ class Database
     }
     public function freeResult()
     {
-        mysqli_free_result($this->result);
+        if ($this->result != null) {
+            mysqli_free_result($this->result);
+        }
     }
     public function disconnect()
     {

@@ -91,7 +91,7 @@ CREATE TABLE
 
 INSERT INTO
     `brand` (`name`, `workfield`)
-VALUES ('AMD', 1), ('AMD', 2), ('ASUS', 0), ('DELL', 0), ('INTEL', 1), ('INTEL', 2), ('LENOVO', 0), ('NIVIDIA', 2), ('SAMSUNG', 3);
+VALUES ('AMD', 1), ('AMD', 2), ('ASUS', 0), ('DELL', 0), ('INTEL', 1), ('INTEL', 2), ('LENOVO', 0), ('NIVIDIA', 2), ('SAMSUNG', 3), ('SAMSUNG', 4);
 
 -- --------------------------------------------------------
 
@@ -254,6 +254,24 @@ CREATE TABLE
         PRIMARY KEY (`mid`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
 
+INSERT INTO
+    `gpu`(
+        `mid`,
+        `subbrand`,
+        `brandmodifier`,
+        `skunumber`,
+        `vram`,
+        `generation`
+    )
+VALUES (
+        'blablatest',
+        'Geforce',
+        'RTX ',
+        '3060TI',
+        '6',
+        'GDDR4'
+    );
+
 -- --------------------------------------------------------
 
 --
@@ -288,6 +306,44 @@ CREATE TABLE
         KEY `ramid` (`ramid`),
         KEY `storageid` (`storageid`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
+
+INSERT INTO
+    `laptop` (
+        `mid`,
+        `modelname`,
+        `os`,
+        `displaytype`,
+        `fingerprint`,
+        `weight`,
+        `webcam`,
+        `webcamquality`,
+        `displayhz`,
+        `batterycapacity`,
+        `ports`,
+        `touchscreen`,
+        `cpuid`,
+        `gpuid`,
+        `storageid`,
+        `ramid`
+    )
+VALUES (
+        '15achvc25',
+        'LEGION 5 15ARH05H',
+        'WINDOWS 10 PRO',
+        'LCD',
+        b '1',
+        '2.5',
+        b '1',
+        '1080',
+        '144',
+        '5000',
+        'usb c&usb a&usb 2.0&3.5 jack',
+        b '0',
+        'jdaskfjhjj3948djdf',
+        'blablatest',
+        'ssdssdssdssd',
+        'ramramramrem'
+    );
 
 -- --------------------------------------------------------
 
@@ -384,6 +440,102 @@ VALUES (
         0
     );
 
+INSERT INTO
+    `product`(
+        `mid`,
+        `brandname`,
+        `workfield`,
+        `body`,
+        `title`,
+        `price`,
+        `quantity`,
+        `imageurls`,
+        `discount`
+    )
+VALUES (
+        'blablatest',
+        'NIVIDIA',
+        2,
+        'NIVIDIA GEFORCE 3060 TI 6 GB GDDR4 WITH LATEST FEATURES AND HAHA',
+        'NIVIDIA GEFORCE 3060 TI 6 GB GDDR4',
+        3000,
+        22,
+        NULL,
+        10
+    );
+
+INSERT INTO
+    `product` (
+        `mid`,
+        `brandname`,
+        `workfield`,
+        `body`,
+        `title`,
+        `price`,
+        `quantity`,
+        `imageurls`,
+        `discount`
+    )
+VALUES (
+        'ramramramrem',
+        'SAMSUNG',
+        3,
+        'Samsung 16 GB memoty stick @4.5 GHZ',
+        'Samsung 16 GB Ram',
+        1400,
+        62,
+        '',
+        9
+    );
+
+INSERT INTO
+    `product` (
+        `mid`,
+        `brandname`,
+        `workfield`,
+        `body`,
+        `title`,
+        `price`,
+        `quantity`,
+        `imageurls`,
+        `discount`
+    )
+VALUES (
+        'ssdssdssdssd',
+        'SAMSUNG',
+        4,
+        'Samsung NVME 2.0 500GB SSD @4.5 GHZ',
+        'Samsung NVME 2.0 500GB SSD',
+        1263,
+        99,
+        '',
+        12
+    );
+
+INSERT INTO
+    `product`(
+        `mid`,
+        `brandname`,
+        `workfield`,
+        `body`,
+        `title`,
+        `price`,
+        `quantity`,
+        `imageurls`,
+        `discount`
+    )
+VALUES (
+        '15achvc25',
+        'LENOVO',
+        0,
+        'Lenovo Legion 5 Gaming 2021 Intel Core i7 10750H RTX 3060 TI 500 GB SSD',
+        'Lenovo Legion 5 Gaming 2021',
+        32000,
+        12,
+        '',
+        15
+    );
+
 -- --------------------------------------------------------
 
 --
@@ -403,6 +555,22 @@ CREATE TABLE
         `capacity` int DEFAULT 0,
         PRIMARY KEY (`mid`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
+
+INSERT INTO
+    `ram`(
+        `mid`,
+        `generation`,
+        `writespeed`,
+        `readspeed`,
+        `capacity`
+    )
+VALUES (
+        'ramramramrem',
+        'DDR4',
+        5000,
+        6050,
+        16
+    );
 
 -- --------------------------------------------------------
 
@@ -464,6 +632,24 @@ CREATE TABLE
         `capacity` int DEFAULT 0,
         PRIMARY KEY (`mid`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
+
+INSERT INTO
+    `storage`(
+        `mid`,
+        `type`,
+        `color`,
+        `writespeed`,
+        `readspeed`,
+        `capacity`
+    )
+VALUES (
+        'ssdssdssdssd',
+        'SSD',
+        'BLUE',
+        5000,
+        5600,
+        500
+    );
 
 -- --------------------------------------------------------
 
