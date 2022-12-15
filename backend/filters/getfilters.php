@@ -3,7 +3,7 @@ include '../../php/dbclass.php';
 $mydb = new Database();
 
 
-$wf = isset($_GET['workfield']) ? $_GET['workfield'] : 0;
+$wf = isset($_POST['workfield']) ? $_POST['workfield'] : 10;
 
 $mydb->connect();
 $respond = [];
@@ -65,9 +65,9 @@ switch ($wf) {
             array_push($respond['cpubrand'], $row['name']);
         }
         //---
-        if (isset($_GET['cpubrand'])) {
+        if (isset($_POST['cpubrand'])) {
             $query = "select distinct subbrand,brandmodifier,skunumber from cpu,product where product.mid=cpu.mid and product.brandname in (";
-            $array = $_GET['cpubrand'];
+            $array = $_POST['cpubrand'];
             foreach ($array as $value) {
                 $query = $query . "'" . $value . "',";
             }
@@ -92,9 +92,9 @@ switch ($wf) {
             array_push($respond['gpubrand'], $row['name']);
         }
         //---
-        if (isset($_GET['gpubrand'])) {
+        if (isset($_POST['gpubrand'])) {
             $query = "select distinct subbrand,brandmodifier,skunumber from gpu,product where product.mid=gpu.mid and product.brandname in (";
-            $array = $_GET['gpubrand'];
+            $array = $_POST['gpubrand'];
             foreach ($array as $value) {
                 $query = $query . "'" . $value . "',";
             }
@@ -196,9 +196,9 @@ switch ($wf) {
             array_push($respond['cache'], $row['cache']);
         }
         //---
-        if (isset($_GET['brand'])) {
+        if (isset($_POST['brand'])) {
             $query = "select distinct subbrand,brandmodifier,skunumber from cpu,product where product.mid=cpu.mid and product.brandname in (";
-            $array = $_GET['brand'];
+            $array = $_POST['brand'];
             foreach ($array as $value) {
                 $query = $query . "'" . $value . "',";
             }
@@ -242,9 +242,9 @@ switch ($wf) {
             array_push($respond['generation'], $row['generation']);
         }
         //---
-        if (isset($_GET['brand'])) {
+        if (isset($_POST['brand'])) {
             $query = "select distinct subbrand,brandmodifier,skunumber from gpu,product where product.mid=gpu.mid and product.brandname in (";
-            $array = $_GET['brand'];
+            $array = $_POST['brand'];
             foreach ($array as $value) {
                 $query = $query . "'" . $value . "',";
             }

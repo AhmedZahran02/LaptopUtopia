@@ -204,6 +204,28 @@ VALUES (
         32
     );
 
+INSERT INTO
+    `cpu` (
+        `mid`,
+        `subbrand`,
+        `brandmodifier`,
+        `skunumber`,
+        `numberofcores`,
+        `numberofthreads`,
+        `clockspeed`,
+        `cache`
+    )
+VALUES (
+        'jdaskfjhjj3djdf',
+        'RYZEN',
+        '7',
+        '4800H',
+        8,
+        16,
+        3.2,
+        64
+    );
+
 -- --------------------------------------------------------
 
 --
@@ -434,6 +456,30 @@ VALUES (
         1,
         'INTEL CORE I7 10750H @2.6 GHZ',
         'INTEL CORE I7 10750H',
+        3000,
+        62,
+        '',
+        0
+    );
+
+INSERT INTO
+    `product` (
+        `mid`,
+        `brandname`,
+        `workfield`,
+        `body`,
+        `title`,
+        `price`,
+        `quantity`,
+        `imageurls`,
+        `discount`
+    )
+VALUES (
+        'jdaskfjhjj3djdf',
+        'AMD',
+        1,
+        'RYZEN 7 4800H @3 GHZ',
+        'AMD RYZEN 7 4800H',
         3000,
         62,
         '',
