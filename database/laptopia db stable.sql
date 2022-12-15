@@ -125,7 +125,7 @@ CREATE TABLE
     IF NOT EXISTS `cartitem` (
         `id` int NOT NULL AUTO_INCREMENT,
         `productid` varchar(50) NOT NULL,
-        `quantity` int NOT NULL DEFAULT '1',
+        `quantity` int NOT NULL DEFAULT 1,
         PRIMARY KEY (`id`),
         KEY `productid` (`productid`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
@@ -353,14 +353,14 @@ VALUES (
         'LEGION 5 15ARH05H',
         'WINDOWS 10 PRO',
         'LCD',
-        b '1',
+        1,
         '2.5',
-        b '1',
+        1,
         '1080',
         '144',
         '5000',
         'usb c&usb a&usb 2.0&3.5 jack',
-        b '0',
+        0,
         'jdaskfjhjj3948djdf',
         'blablatest',
         'ssdssdssdssd',
@@ -401,7 +401,7 @@ CREATE TABLE
         `id` int NOT NULL AUTO_INCREMENT,
         `orderid` int NOT NULL,
         `productid` varchar(50) NOT NULL,
-        `quantity` int NOT NULL DEFAULT '1',
+        `quantity` int NOT NULL DEFAULT 1,
         PRIMARY KEY (`id`),
         KEY `orderid` (`orderid`),
         KEY `productid` (`productid`)

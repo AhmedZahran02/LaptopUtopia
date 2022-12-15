@@ -81,7 +81,7 @@ switch ($wf) {
         //var_dump($result);
         $respond["cpuname"] = [];
         while ($row = $result->fetch_assoc()) {
-            array_push($respond['cpuname'], $row);
+            array_push($respond['cpuname'], $row['subbrand'] . ' ' . $row['brandmodifier'] . ' ' . $row['skunumber']);
         }
         //--
         $query = "SELECT name FROM brand WHERE workfield = 2;";
@@ -108,7 +108,7 @@ switch ($wf) {
         //var_dump($result);
         $respond["gpuname"] = [];
         while ($row = $result->fetch_assoc()) {
-            array_push($respond['gpuname'], $row);
+            array_push($respond['gpuname'], $row['subbrand'] . ' ' . $row['brandmodifier'] . ' ' . $row['skunumber']);
         }
         //--
         $query = "SELECT name FROM brand WHERE workfield = 3;";
