@@ -18,7 +18,7 @@ $type = $_GET['type'];
 $color = $_GET['color'];
 $writespeed = $_GET['writespeed'];
 $reedspeed = $_GET['reedspeed'];
-$capacity = $_GET['capaciry'];
+$capacity = $_GET['capacity'];
 
     $mydb->connect();
 
