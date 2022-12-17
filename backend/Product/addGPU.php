@@ -28,7 +28,7 @@ if (
 
     $mydb->connect();
 
-    $query = "insert into cpu values " . "('" . $mid . "',' " . $subbrand . "','" . $brandmodifier . "','" . $skunumber . "'," . $vram . ",'" . $generation . "');";
+    $query = "insert into gpu values " . "('" . $mid . "',' " . $subbrand . "','" . $brandmodifier . "','" . $skunumber . "'," . $vram . ",'" . $generation . "');";
 
     //echo $query;
     $result = $mydb->query($query);
