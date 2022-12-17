@@ -2,21 +2,21 @@
 include '../../php/dbclass.php';
 $mydb = new Database();
 
-if (isset($_GET['mid']) && isset($_GET['workField'])) {
+if (isset($_GET['mid']) && isset($_GET['workfield'])) {
     $mid = $_GET['mid'];
-    $workField = $_GET['workField'];
+    $workField = $_GET['workfield'];
     $mydb->connect();
 
     if ($workField == "0") {
-        $query = "SELECT * FROM laptop WHERE mid = '" . $mid . "'";
+        $query = "SELECT * FROM laptop , product WHERE product.mid = '" . $mid . "'" . "and cpu.mid = product.mid";
     } else if ($workField == "1") {
-        $query = "SELECT * FROM cpu WHERE mid = '" . $mid . "'";
+        $query = "SELECT * FROM cpu , product WHERE product.mid = '" . $mid . "'" . "and cpu.mid = product.mid";
     } else if ($workField == "2") {
-        $query = "SELECT * FROM gpu WHERE mid = '" . $mid . "'";
+        $query = "SELECT * FROM gpu , product WHERE product.mid = '" . $mid . "'" . "and cpu.mid = product.mid";
     } else if ($workField == "3") {
-        $query = "SELECT * FROM ram WHERE mid = '" . $mid . "'";
+        $query = "SELECT * FROM ram , product WHERE product.mid = '" . $mid . "'" . "and cpu.mid = product.mid";
     } else if ($workField == "4") {
-        $query = "SELECT * FROM storage WHERE mid = '" . $mid . "'";
+        $query = "SELECT * FROM storage , product WHERE product.mid = '" . $mid . "'" . "and cpu.mid = product.mid";
     }
 
     //echo $query;
