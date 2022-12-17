@@ -2,11 +2,12 @@
 include '../../php/dbclass.php';
 $mydb = new Database();
 
-if (isset($_GET['q'])) {
-    $workField = $_GET['q'];
+if (isset($_GET['q']) && isset($_GET['workfield'])) {
+    $q = $_GET['q'];
+    $wf = $_GET['workfield'];
     $mydb->connect();
 
-    $query = "SELECT * FROM product WHERE product.workfield = '" . $workField . "'";
+    $query = "SELECT * FROM product WHERE product.title like '%" . $q . "%' and product.workfield = " . $wf . ";";
     //echo $query;
     $result = $mydb->query($query);
 
