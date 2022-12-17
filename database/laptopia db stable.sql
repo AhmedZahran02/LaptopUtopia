@@ -458,7 +458,7 @@ VALUES (
         'INTEL CORE I7 10750H',
         3000,
         62,
-        '',
+        'https://m.media-amazon.com/images/I/415MKhMwn9L._AC_SY780_.jpg',
         0
     );
 
@@ -482,7 +482,7 @@ VALUES (
         'AMD RYZEN 7 4800H',
         3000,
         62,
-        '',
+        'https://m.media-amazon.com/images/I/51XoylGq9iL.jpg',
         0
     );
 
@@ -506,7 +506,7 @@ VALUES (
         'NIVIDIA GEFORCE 3060 TI 6 GB GDDR4',
         3000,
         22,
-        NULL,
+        'https://m.media-amazon.com/images/I/71HQdX8f1NS.jpg',
         10
     );
 
@@ -530,7 +530,7 @@ VALUES (
         'Samsung 16 GB Ram',
         1400,
         62,
-        '',
+        'https://i.ebayimg.com/images/g/99EAAOSwnMVh-tkD/s-l500.jpg',
         9
     );
 
@@ -554,7 +554,7 @@ VALUES (
         'Samsung NVME 2.0 500GB SSD',
         1263,
         99,
-        '',
+        'https://images-eu.ssl-images-amazon.com/images/I/911ujeCkGfL._AC_UL600_SR600,600_.jpg',
         12
     );
 
@@ -578,7 +578,7 @@ VALUES (
         'Lenovo Legion 5 Gaming 2021',
         32000,
         12,
-        '',
+        'https://www.sigma-computer.com/image/products/1567918490web-template6.png',
         15
     );
 
