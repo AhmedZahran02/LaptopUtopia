@@ -10,18 +10,20 @@ readspeed
 capacity	
 */
 
-if (isset($_GET['mid']) && isset($_GET['generation'])&& isset($_GET['writespeed'])&& isset($_GET['reedspeed'])
-&& isset($_GET['capacity'])) {
-    
-$mid = $_GET['mid'];
-$generation = $_GET['generation'];
-$writespeed = $_GET['writespeed'];
-$reedspeed = $_GET['reedspeed'];
-$capacity = $_GET['capaciry'];
+if (
+    isset($_POST['mid']) && isset($_POST['generation']) && isset($_POST['writespeed']) && isset($_POST['reedspeed'])
+    && isset($_POST['capacity'])
+) {
+
+    $mid = $_POST['mid'];
+    $generation = $_POST['generation'];
+    $writespeed = $_POST['writespeed'];
+    $reedspeed = $_POST['reedspeed'];
+    $capacity = $_POST['capaciry'];
 
     $mydb->connect();
 
-    $query = "insert into ram values "."('".$mid."',' ".$generation."',".$writespeed.",".$reedspeed.",".$capacity.");";
+    $query = "insert into ram values " . "('" . $mid . "',' " . $generation . "'," . $writespeed . "," . $reedspeed . "," . $capacity . ");";
 
     //echo $query;
     $result = $mydb->query($query);

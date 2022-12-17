@@ -10,19 +10,21 @@ readspeed
 capacity
 */
 
-if (isset($_GET['mid']) && isset($_GET['generation'])&& isset($_GET['color'])&& isset($_GET['writespeed'])&& isset($_GET['reedspeed'])
-&& isset($_GET['capacity'])) {
-    
-$mid = $_GET['mid'];
-$type = $_GET['type'];
-$color = $_GET['color'];
-$writespeed = $_GET['writespeed'];
-$reedspeed = $_GET['reedspeed'];
-$capacity = $_GET['capaciry'];
+if (
+    isset($_POST['mid']) && isset($_POST['generation']) && isset($_POST['color']) && isset($_POST['writespeed']) && isset($_POST['reedspeed'])
+    && isset($_POST['capacity'])
+) {
+
+    $mid = $_POST['mid'];
+    $type = $_POST['type'];
+    $color = $_POST['color'];
+    $writespeed = $_POST['writespeed'];
+    $reedspeed = $_POST['reedspeed'];
+    $capacity = $_POST['capaciry'];
 
     $mydb->connect();
 
-    $query = "insert into storage values "."('".$mid."',' ".$type."','". $color ."',".$writespeed.",".$reedspeed.",".$capacity.");";
+    $query = "insert into storage values " . "('" . $mid . "',' " . $type . "','" . $color . "'," . $writespeed . "," . $reedspeed . "," . $capacity . ");";
 
     //echo $query;
     $result = $mydb->query($query);

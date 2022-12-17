@@ -2,33 +2,35 @@
 include '../../php/dbclass.php';
 $mydb = new Database();
 
-if (isset($_GET['mid']) && isset($_GET['modelname'])&& isset($_GET['os'])&& isset($_GET['displaytype'])
-&& isset($_GET['fingerprint'])&& isset($_GET['wheight'])&& isset($_GET['webcam'])&& isset($_GET['webcamquality'])
-&& isset($_GET['displayhz'])&& isset($_GET['ports'])&& isset($_GET['touchscreen'])&& isset($_GET['cpuid'])
-&& isset($_GET['gpuid'])&& isset($_GET['storageid'])&& isset($_GET['ramid'])) {
-    
+if (
+    isset($_POST['mid']) && isset($_POST['modelname']) && isset($_POST['os']) && isset($_POST['displaytype'])
+    && isset($_POST['fingerprint']) && isset($_POST['wheight']) && isset($_POST['webcam']) && isset($_POST['webcamquality'])
+    && isset($_POST['displayhz']) && isset($_POST['ports']) && isset($_POST['touchscreen']) && isset($_POST['cpuid'])
+    && isset($_POST['gpuid']) && isset($_POST['storageid']) && isset($_POST['ramid'])
+) {
 
-    $mid = $_GET['mid'];
-    $modelname = $_GET['modelname'];
-    $os = $_GET['os'];
-    $displaytype = $_GET['displaytype'];
-    $fingerprint = $_GET['fingerprint'];
-    $weight = $_GET['wheight'];
-    $webcam = $_GET['webcam'];
-    $webcamquality = $_GET['webcamquality'];
-    $displayhz = $_GET['displayhz'];
-    $batterycapacity = $_GET['ports'];
-    $ports = $_GET['ports'];
-    $touchscreen = $_GET['touchscreen'];
-    $cpuid = $_GET['cpuid'];
-    $gpuid = $_GET['gpuid'];
-    $storageid = $_GET['storageid'];
-    $ramid	= $_GET['ramid'];
-    
+
+    $mid = $_POST['mid'];
+    $modelname = $_POST['modelname'];
+    $os = $_POST['os'];
+    $displaytype = $_POST['displaytype'];
+    $fingerprint = $_POST['fingerprint'];
+    $weight = $_POST['wheight'];
+    $webcam = $_POST['webcam'];
+    $webcamquality = $_POST['webcamquality'];
+    $displayhz = $_POST['displayhz'];
+    $batterycapacity = $_POST['ports'];
+    $ports = $_POST['ports'];
+    $touchscreen = $_POST['touchscreen'];
+    $cpuid = $_POST['cpuid'];
+    $gpuid = $_POST['gpuid'];
+    $storageid = $_POST['storageid'];
+    $ramid    = $_POST['ramid'];
+
 
     $mydb->connect();
 
-      /*
+    /*
       	1	mid Primary	varchar(50)
 	2	modelname	varchar(255)	
 	3	os	varchar(255)	
@@ -49,9 +51,9 @@ if (isset($_GET['mid']) && isset($_GET['modelname'])&& isset($_GET['os'])&& isse
        * 
        */
 
-    $query = "insert into laptop values "."('".$mid."',' ".$modelname."','".$os."','".$displaytype."',".$fingerprint.", ".$weight.
-    ",".$webcam.",".$webcamquality.",".$displayhz.",".$batterycapacity.",' ".$ports."',".
-    $touchscreen.",' ".$cpuid."',' ".$gpuid."',' ".$storageid."','".$ramid."');";
+    $query = "insert into laptop values " . "('" . $mid . "',' " . $modelname . "','" . $os . "','" . $displaytype . "'," . $fingerprint . ", " . $weight .
+        "," . $webcam . "," . $webcamquality . "," . $displayhz . "," . $batterycapacity . ",' " . $ports . "'," .
+        $touchscreen . ",' " . $cpuid . "',' " . $gpuid . "',' " . $storageid . "','" . $ramid . "');";
 
     //echo $query;
     $result = $mydb->query($query);

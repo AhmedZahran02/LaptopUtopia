@@ -3,52 +3,79 @@ include '../../php/dbclass.php';
 $mydb = new Database();
 
 
-$wf = isset($_GET['workfield']) ? $_GET['workfield'] : 0;
-$query = '';
+$wf = isset($_POST['workfield']) ? $_POST['workfield'] : 10;
+$mydb->connect();
 switch ($wf) {
     case 0:
-        $table = 'laptop';
+        $wf = 0;
         break;
     case 1:
-        $table = 'cpu';
+        $wf = 1;
         break;
     case 2:
-        $table = 'gpu';
+        $wf = 2;
         break;
     case 3:
-        $table = 'ram';
-        $mid = $_GET['mid'];
-        $generation = $_GET['generation'];
-        $writespeed = $_GET['writespeed'];
-        $readspeed = $_GET['readspeed'];
-        $capacity = $_GET['capacity'];
-        $query = "insert into " . $table . " values " . "('" . $mid . "',' " . $generation . "'," . $writespeed . "," . $readspeed . "," . $capacity . ");";
+        $wf = 3;
         break;
     case 4:
-        $table = 'storage';
+        $wf = 4;
         break;
     default:
-        $table = 'laptop';
+        $wf = -1;
         break;
 }
 
+if (
+    isset($_POST['mid']) && isset($_POST['brandname']) && isset($_POST['body']) && isset($_POST['title'])
+    && isset($_POST['price']) && isset($_POST['quantity']) && isset($_POST['imagesurls']) && isset($_POST['discount']) && $wf != -1
+) {
 
-$query = "insert into " . $table . " values " . "('" . $username . "',' " . $firstname . "','" . $lastname . "','" . $email . "','" . $password . "','" . $phone . "','" . $dateofbirth . "','" . $city . "','" . $street . "','" . $housenumber . "','" . $cartid . "','" . $wishlistid . "');";
+    $mid = $_POST['mid'];
+    $brandname = $_POST['brandname'];
+    $body = $_POST['body'];
+    $title = $_POST['title'];
+    $price = $_POST['price'];
+    $quantity = $_POST['quantity'];
+    $imagesurls = $_POST['imagesurls'];
+    $discount = $_POST['discount'];
 
+    $query = "INSERT INTO
+    `product` (
+        `mid`,
+        `brandname`,
+        `workfield`,
+        `body`,
+        `title`,
+        `price`,
+        `quantity`,
+        `imageurls`,
+        `discount`
+    )
+VALUES (
+        '" . $mid . "',
+        '" . $brandname . "',
+        " . $wf . ",
+        '" . $body . "',
+        '" . $title . "',
+        " . $price . ",
+        " . $quantity . ",
+        '" . $imagesurls . "',
+        " . $discount . "
+    );";
 
-$mydb->connect();
-$result = $mydb->query($query);
+    $result = $mydb->query($query);
 
+    $respond = [["done" => 0]];
 
-$respond = [["Found" => 0]];
+    while ($row = $result->fetch_assoc()) {
+        $respond[0]["done"] = 1;
+        array_push($respond, $row);
+    }
 
-while ($row = $result->fetch_assoc()) {
-    $respond[0]["Found"] = 1;
-    array_push($respond, $row);
+    $mydb->freeResult();
+    $mydb->disconnect();
+
+    echo json_encode($respond);
+    return json_encode($respond);
 }
-
-$mydb->freeResult();
-$mydb->disconnect();
-
-echo json_encode($respond);
-return json_encode($respond);

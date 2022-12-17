@@ -14,23 +14,25 @@ clockspeed
 cache
 */
 
-if (isset($_GET['mid']) && isset($_GET['subbrand'])&& isset($_GET['brandmodifier'])&& isset($_GET['skunumber'])
-&& isset($_GET['numberofcores'])&& isset($_GET['numberofthreads'])&& isset($_GET['clockspeed'])&& isset($_GET['cache'])) {
-    
-$mid = $_GET['mid'];
-$subbrand = $_GET['subbrand'];
-$brandmodifier = $_GET['brandmodifier'];
-$skunumber = $_GET['skunumber'];
-$numberofcores = $_GET['numberofcores'];
-$numberofthreads = $_GET['numberofthreads'];
-$clockspeed = $_GET['clockspeed'];
-$cache = $_GET['cache'];
+if (
+    isset($_POST['mid']) && isset($_POST['subbrand']) && isset($_POST['brandmodifier']) && isset($_POST['skunumber'])
+    && isset($_POST['numberofcores']) && isset($_POST['numberofthreads']) && isset($_POST['clockspeed']) && isset($_POST['cache'])
+) {
+
+    $mid = $_POST['mid'];
+    $subbrand = $_POST['subbrand'];
+    $brandmodifier = $_POST['brandmodifier'];
+    $skunumber = $_POST['skunumber'];
+    $numberofcores = $_POST['numberofcores'];
+    $numberofthreads = $_POST['numberofthreads'];
+    $clockspeed = $_POST['clockspeed'];
+    $cache = $_POST['cache'];
 
 
     $mydb->connect();
 
-    $query = "insert into cpu values "."('".$mid."',' ".$subbrand."','".$brandmodifier."','".$skunumber."',".$numberofcores.
-    ",".$numberofthreads.",".$clockspeed.",". $cache .");";
+    $query = "insert into cpu values " . "('" . $mid . "',' " . $subbrand . "','" . $brandmodifier . "','" . $skunumber . "'," . $numberofcores .
+        "," . $numberofthreads . "," . $clockspeed . "," . $cache . ");";
 
     //echo $query;
     $result = $mydb->query($query);
