@@ -91,7 +91,7 @@ CREATE TABLE
 
 INSERT INTO
     `brand` (`name`, `workfield`)
-VALUES ('AMD', 1), ('AMD', 2), ('ASUS', 0), ('DELL', 0), ('INTEL', 1), ('INTEL', 2), ('LENOVO', 0), ('NIVIDIA', 2), ('SAMSUNG', 3), ('SAMSUNG', 4);
+VALUES ('AMD', 1), ('AMD', 2), ('ASUS', 0), ('DELL', 0), ('INTEL', 1), ('INTEL', 2), ('LENOVO', 0), ('HP', 0), ('NIVIDIA', 2), ('SAMSUNG', 3), ('SAMSUNG', 4);
 
 -- --------------------------------------------------------
 
