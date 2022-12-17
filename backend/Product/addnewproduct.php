@@ -1,10 +1,10 @@
 <?php
 include '../../php/dbclass.php';
 $mydb = new Database();
-
+$mydb->connect();
 
 $wf = isset($_POST['workfield']) ? $_POST['workfield'] : 10;
-$mydb->connect();
+
 switch ($wf) {
     case 0:
         $wf = 0;
@@ -63,17 +63,14 @@ VALUES (
         '" . $imagesurls . "',
         " . $discount . "
     );";
-
+    //echo $query;
     $result = $mydb->query($query);
-
     $respond = [["done" => 0]];
 
-    while ($row = $result->fetch_assoc()) {
+    if ($result == true) {
         $respond[0]["done"] = 1;
-        array_push($respond, $row);
     }
 
-    $mydb->freeResult();
     $mydb->disconnect();
 
     echo json_encode($respond);

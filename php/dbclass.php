@@ -43,11 +43,7 @@ class Database
     }
     public function query($query)
     {
-        if ($this->result = mysqli_query($this->connect, $query)) {
-            return $this->result;
-        } else {
-            return null;
-        }
+        return $this->result = mysqli_query($this->connect, $query);
     }
     public function freeResult()
     {
