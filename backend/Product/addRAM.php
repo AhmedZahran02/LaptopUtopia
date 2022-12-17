@@ -19,7 +19,7 @@ if (
     $generation = $_POST['generation'];
     $writespeed = $_POST['writespeed'];
     $reedspeed = $_POST['reedspeed'];
-    $capacity = $_POST['capaciry'];
+    $capacity = $_POST['capacity'];
 
     $mydb->connect();
 
