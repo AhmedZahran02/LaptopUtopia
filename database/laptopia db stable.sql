@@ -63,6 +63,7 @@ CREATE TABLE
         `dateofbirth` date DEFAULT NULL,
         `startedworkat` date DEFAULT NULL,
         `owner` bit DEFAULT 0,
+        `imageurl` varchar(500) DEFAULT NULL,
         PRIMARY KEY (`username`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
 
@@ -250,6 +251,7 @@ CREATE TABLE
         `housenumber` int DEFAULT NULL,
         `cartid` int NOT NULL,
         `wishlistid` int NOT NULL,
+        `imageurl` varchar(500) DEFAULT NULL,
         PRIMARY KEY (`username`),
         KEY `cartid` (`cartid`),
         KEY `wishlistid` (`wishlistid`)
