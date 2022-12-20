@@ -4,7 +4,7 @@ $mydb = new Database();
 
 $mydb->connect();
 
-$wf = isset($_GET['workfield']) ? $_GET['workfield'] : -1;
+$wf = isset($_POST['workfield']) ? $_POST['workfield'] : -1;
 
 if ($wf == -1) {
     $mydb->disconnect();
