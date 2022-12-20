@@ -12,7 +12,7 @@ if($_GET['username']) {
 
 
     $query0 = "(select cartid from customer where username = '" . $username . "');";
-    $query = "select * from cartitem where id in " . $query0;
+    $query = "select * from cartitem , product where id = mid and id in " . $query0;
 
 
     $result = $mydb->query($query);
