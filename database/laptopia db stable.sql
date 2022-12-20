@@ -63,6 +63,7 @@ CREATE TABLE
         `dateofbirth` date DEFAULT NULL,
         `startedworkat` date DEFAULT NULL,
         `owner` bit DEFAULT 0,
+        `imageurl` varchar(500) DEFAULT NULL,
         PRIMARY KEY (`username`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_general_ci;
 
@@ -91,7 +92,7 @@ CREATE TABLE
 
 INSERT INTO
     `brand` (`name`, `workfield`)
-VALUES ('AMD', 1), ('AMD', 2), ('ASUS', 0), ('DELL', 0), ('INTEL', 1), ('INTEL', 2), ('LENOVO', 0), ('NIVIDIA', 2), ('SAMSUNG', 3), ('SAMSUNG', 4);
+VALUES ('AMD', 1), ('AMD', 2), ('ASUS', 0), ('DELL', 0), ('INTEL', 1), ('INTEL', 2), ('LENOVO', 0), ('HP', 0), ('NIVIDIA', 2), ('SAMSUNG', 3), ('SAMSUNG', 4);
 
 -- --------------------------------------------------------
 
@@ -250,6 +251,7 @@ CREATE TABLE
         `housenumber` int DEFAULT NULL,
         `cartid` int NOT NULL,
         `wishlistid` int NOT NULL,
+        `imageurl` varchar(500) DEFAULT NULL,
         PRIMARY KEY (`username`),
         KEY `cartid` (`cartid`),
         KEY `wishlistid` (`wishlistid`)

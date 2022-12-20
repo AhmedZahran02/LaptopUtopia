@@ -101,14 +101,12 @@ $mydb->connect();
 $result = $mydb->query($query);
 
 
-$respond = [["Updated" => 0]];
+$respond = [["updated" => 0]];
 
-while ($row = $result->fetch_assoc()) {
-    $respond[0]["Updated"] = 1;
-    array_push($respond, $row);
+if ($result == true) {
+    $respond[0]["updated"] = 1;
 }
 
-$mydb->freeResult();
 $mydb->disconnect();
 
 echo json_encode($respond);

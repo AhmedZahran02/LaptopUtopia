@@ -37,17 +37,14 @@ if (
     //echo $query;
     $result = $mydb->query($query);
 
-    $respond = [];
+    $respond = [["done" => 0]];
 
-    while ($row = $result->fetch_assoc()) {
-        array_push($respond, $row);
+    if ($result == true) {
+        $respond[0]["done"] = 1;
     }
 
-    $respond = json_encode($respond);
-
-    echo $respond;
-    $mydb->freeResult();
     $mydb->disconnect();
 
-    return $respond;
+    echo json_encode($respond);
+    return json_encode($respond);
 }
