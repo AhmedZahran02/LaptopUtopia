@@ -9,12 +9,14 @@ $mydb->connect();
 $respond = [];
 switch ($wf) {
     case 0:
-        $query = "SELECT * FROM product, laptop, cpu, gpu, ram, storage where product.workfield = " . $wf . " and product.mid=laptop.mid and laptop.cpuid=cpu.mid and laptop.gpuid=gpu.mid and laptop.ramid=ram.mid and laptop.storageid=storage.mid";
+        $query = "SELECT lab.mid,lab.brandname,lab.body,lab.title,lab.price,lab.quantity,lab.imageurls,lab.discount
+        FROM laptop , product as lab ,product as c,product as g,product as r,product as s,cpu,gpu,ram,storage WHERE laptop.mid = lab.mid and laptop.cpuid = cpu.mid and laptop.gpuid = gpu.mid and laptop.ramid = ram.mid and laptop.storageid = storage.mid and cpu.mid=c.mid and gpu.mid=g.mid and ram.mid=r.mid and storage.mid=s.mid";
+
         $brand = [];
         if (isset($_POST['brand'])) {
             $brand = $_POST['brand'];
             if (count($brand) > 0) {
-                $query = $query . " and brandname in (";
+                $query = $query . " and lab.brandname in (";
                 foreach ($brand as $b) {
                     $query = $query . "'" . $b . "', ";
                 }
@@ -27,7 +29,7 @@ switch ($wf) {
         if (isset($_POST['displaytype'])) {
             $displaytype = $_POST['displaytype'];
             if (count($displaytype) > 0) {
-                $query = $query . " and displaytype in (";
+                $query = $query . " and laptop.displaytype in (";
                 foreach ($displaytype as $b) {
                     $query = $query . "'" . $b . "', ";
                 }
@@ -40,7 +42,7 @@ switch ($wf) {
         if (isset($_POST['webcamquality'])) {
             $webcamquality = $_POST['webcamquality'];
             if (count($webcamquality) > 0) {
-                $query = $query . " and webcamquality in (";
+                $query = $query . " and laptop.webcamquality in (";
                 foreach ($webcamquality as $b) {
                     $query = $query . $b . ", ";
                 }
@@ -53,7 +55,7 @@ switch ($wf) {
         if (isset($_POST['os'])) {
             $os = $_POST['os'];
             if (count($os) > 0) {
-                $query = $query . " and os in (";
+                $query = $query . " and laptop.os in (";
                 foreach ($os as $b) {
                     $query = $query . "'" . $b . "', ";
                 }
@@ -66,7 +68,7 @@ switch ($wf) {
         if (isset($_POST['displayhz'])) {
             $displayhz = $_POST['displayhz'];
             if (count($displayhz) > 0) {
-                $query = $query . " and displayhz in (";
+                $query = $query . " and laptop.displayhz in (";
                 foreach ($displayhz as $b) {
                     $query = $query . $b . ", ";
                 }
@@ -79,9 +81,22 @@ switch ($wf) {
         if (isset($_POST['batterycapacity'])) {
             $batterycapacity = $_POST['batterycapacity'];
             if (count($batterycapacity) > 0) {
-                $query = $query . " and batterycapacity in (";
+                $query = $query . " and laptop.batterycapacity in (";
                 foreach ($batterycapacity as $b) {
                     $query = $query . $b . ", ";
+                }
+                $query = rtrim($query, ", ");
+                $query = $query . ")";
+            }
+        }
+
+        $cpubrand = [];
+        if (isset($_POST['cpubrand'])) {
+            $cpubrand = $_POST['cpubrand'];
+            if (count($cpubrand) > 0) {
+                $query = $query . " and c.brandname in (";
+                foreach ($cpubrand as $b) {
+                    $query = $query . "'" . $b . "', ";
                 }
                 $query = rtrim($query, ", ");
                 $query = $query . ")";
@@ -120,6 +135,19 @@ switch ($wf) {
             }
         }
 
+        $gpubrand = [];
+        if (isset($_POST['gpubrand'])) {
+            $gpubrand = $_POST['gpubrand'];
+            if (count($gpubrand) > 0) {
+                $query = $query . " and g.brandname in (";
+                foreach ($gpubrand as $b) {
+                    $query = $query . "'" . $b . "', ";
+                }
+                $query = rtrim($query, ", ");
+                $query = $query . ")";
+            }
+        }
+
         $gpuname = [];
 
         if (isset($_POST['gpuname'])) {
@@ -152,6 +180,20 @@ switch ($wf) {
             }
         }
 
+        $rambrand = [];
+        if (isset($_POST['rambrand'])) {
+            $rambrand = $_POST['rambrand'];
+            if (count($rambrand) > 0) {
+                $query = $query . " and r.brandname in (";
+                foreach ($rambrand as $b) {
+                    $query = $query . "'" . $b . "', ";
+                }
+                $query = rtrim($query, ", ");
+                $query = $query . ")";
+            }
+        }
+
+
         $ramcapacity = [];
         if (isset($_POST['ramcapacity'])) {
             $ramcapacity = $_POST['ramcapacity'];
@@ -178,6 +220,19 @@ switch ($wf) {
             }
         }
 
+        $storagebrand = [];
+        if (isset($_POST['storagebrand'])) {
+            $storagebrand = $_POST['storagebrand'];
+            if (count($storagebrand) > 0) {
+                $query = $query . " and s.brandname in (";
+                foreach ($storagebrand as $b) {
+                    $query = $query . "'" . $b . "', ";
+                }
+                $query = rtrim($query, ", ");
+                $query = $query . ")";
+            }
+        }
+
         $storagecapacity = [];
         if (isset($_POST['storagecapacity'])) {
             $storagecapacity = $_POST['storagecapacity'];
@@ -191,7 +246,13 @@ switch ($wf) {
             }
         }
 
-        echo $query;
+        // echo $query;
+        $result = $mydb->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            array_push($respond, $row);
+        }
+
         break;
     case 1:
         $query = "SELECT * FROM product, cpu where product.workfield = " . $wf . " and product.mid=cpu.mid";
@@ -291,7 +352,12 @@ switch ($wf) {
                 $query = $query . ")";
             }
         }
-        echo $query;
+        // echo $query;
+        $result = $mydb->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            array_push($respond, $row);
+        }
         break;
     case 2:
         $query = "SELECT * FROM product, gpu where product.workfield = " . $wf . " and product.mid=gpu.mid";
@@ -365,7 +431,12 @@ switch ($wf) {
                 $query = $query . ")";
             }
         }
-        echo $query;
+        // echo $query;
+        $result = $mydb->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            array_push($respond, $row);
+        }
         break;
     case 3:
         $query = "SELECT * FROM product, ram where product.workfield = " . $wf . " and product.mid=ram.mid";
@@ -433,7 +504,12 @@ switch ($wf) {
                 $query = $query . ")";
             }
         }
-        echo $query;
+        // echo $query;
+        $result = $mydb->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            array_push($respond, $row);
+        }
         break;
     case 4:
         $query = "SELECT * FROM product, storage where product.workfield = " . $wf . " and product.mid=storage.mid";
@@ -514,7 +590,12 @@ switch ($wf) {
                 $query = $query . ");";
             }
         }
-        echo $query;
+        // echo $query;
+        $result = $mydb->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            array_push($respond, $row);
+        }
         break;
     default:
         $respond[0]["Found"] = 0;
@@ -524,5 +605,5 @@ switch ($wf) {
 $mydb->freeResult();
 $mydb->disconnect();
 
-// echo json_encode($respond);
+echo json_encode($respond);
 return json_encode($respond);
