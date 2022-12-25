@@ -27,7 +27,7 @@ class Database
     {
         $this->database = $database;
     }
-    public  function __construct($userName = "root", $password = "", $hostName = "localhost", $database = "laptopia")
+    public  function __construct($userName = "laptopia", $password = "laptopia", $hostName = "db4free.net:3306", $database = "laptopia")
     {
         $this->setUserName($userName);
         $this->setPassword($password);
