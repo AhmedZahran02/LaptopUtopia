@@ -55,4 +55,25 @@ class Database
     {
         mysqli_close($this->connect);
     }
+
+    public function get_cartid_from_username($username)
+    {
+        $query0 = "select * from customer where username = '" . $username . "';";
+    
+        // echo $query0;
+     
+         $result = $this->query($query0);
+     
+         $respond = [];
+     
+         $cartid = "";
+     
+         while ($row = $result->fetch_assoc()) {
+             array_push($respond, $row);
+             $cartid = $row['cartid'];
+         }
+
+         return $cartid;
+    }
+
 }
