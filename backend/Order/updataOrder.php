@@ -9,7 +9,7 @@ if (isset($_GET['q'])) {
     //Will Be Updated Later
 
 
-    $query = "SELECT * FROM order ";
+    $query = "SELECT * FROM orders ";
     //echo $query;
     $result = $mydb->query($query);
 

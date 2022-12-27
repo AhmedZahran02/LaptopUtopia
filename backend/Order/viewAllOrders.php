@@ -4,7 +4,7 @@ $mydb = new Database();
 
 $mydb->connect();
 
-$query = "SELECT * FROM order ";
+$query = "SELECT * FROM orders ";
 //echo $query;
 $result = $mydb->query($query);
 
