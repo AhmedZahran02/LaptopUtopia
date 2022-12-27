@@ -76,4 +76,23 @@ class Database
          return $cartid;
     }
 
+    public function get_wishlistid_from_username($username)
+    {
+        $query0 = "select wishlistid from customer where username = '" . $username . "';";
+    
+        // echo $query0;
+     
+         $result = $this->query($query0);
+     
+         $respond = [];
+     
+         $wishlistid = "";
+     
+         while ($row = $result->fetch_assoc()) {
+            array_push($respond, $row);
+            $wishlistid = $row['wishlist'];
+         }
+
+         return $wishlistid;
+    }
 }
