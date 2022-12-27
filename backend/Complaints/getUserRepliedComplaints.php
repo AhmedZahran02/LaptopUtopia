@@ -4,9 +4,12 @@ $mydb = new Database();
 
 $mydb->connect();
 
-$query = "SELECT * FROM orders ";
-//echo $query;
+$customerid = $_GET['username'];
+
+$query = "SELECT * FROM complaint WHERE anwser is not null and complaint.customerid = '" . $customerid . "' ;";
+
 $result = $mydb->query($query);
+
 
 $respond = [];
 
@@ -14,10 +17,11 @@ while ($row = $result->fetch_assoc()) {
     array_push($respond, $row);
 }
 
+
 $respond = json_encode($respond);
 
-echo $respond;
 $mydb->freeResult();
 $mydb->disconnect();
 
+echo $respond;
 return $respond;

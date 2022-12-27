@@ -4,7 +4,10 @@ $mydb = new Database();
 
 $mydb->connect();
 
-$query = "SELECT * FROM orders ";
+$username = $_GET['username'];
+
+
+$query = "SELECT * FROM orders WHERE customerusername = '" . $username . "' ;";
 //echo $query;
 $result = $mydb->query($query);
 
