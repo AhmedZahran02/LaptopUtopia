@@ -1,12 +1,18 @@
 <?php
+
 include '../../php/dbclass.php';
 $mydb = new Database();
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+$mydb->connect();
+
+if (isset($_POST['id'])) {
+
     $mydb->connect();
 
-    $query = "DELETE * FROM orders WHERE id = " . $id . ";";
+    $id = $_POST['id'];
+
+    $query = "DELETE FROM complaint WHERE id='" . $id . "'";
+
     //echo $query;
     $result = $mydb->query($query);
 

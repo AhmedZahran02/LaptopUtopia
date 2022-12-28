@@ -7,7 +7,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['isAd
     $pass = $_POST['password'];
     $table = $_POST['isAdmin'] == 0 ? "customer" : "admin";
 
-    $query = "SELECT * FROM " . $table . " WHERE username = '" . $user . "' AND password = '" . $pass . "'";
+    $query = "SELECT * FROM " . $table . " WHERE username = '" . $user . "' AND password = '" . sha1($pass) . "'";
 
     $mydb->connect();
     $result = $mydb->query($query);
