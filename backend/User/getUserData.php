@@ -2,8 +2,8 @@
 include '../../php/dbclass.php';
 $mydb = new Database();
 
-if (isset($_POST['username'])) {
-    $_username = $_POST['username'];
+if (isset($_GET['username'])) {
+    $_username = $_GET['username'];
 
     $query = "select * from customer where username='" . $_username . "';";
 

@@ -17,14 +17,20 @@ $products = [];
 
 /*===================================================================================================================*/
 /* Getting Products in cart and its quantity */
-$query = "SELECT product.mid, cartitem.quantity FROM product,cartitem WHERE product.mid = cartitem.productid AND cartitem.id = ". $cartid .";";
+$query = "SELECT product.mid, cartitem.quantity,product.quantity as q FROM product,cartitem WHERE product.mid = cartitem.productid AND cartitem.id = " . $cartid . ";";
 
 $result = $mydb->query($query);
 
 $mid = [];
 
 while ($row = $result->fetch_assoc()) {
-    array_push($products,$row);
+    if ($row['quantity'] <= $row['q']) {
+        array_push($products, $row);
+    } else {
+        $result[0]['outofstock'] = $row['mid'];
+        echo $result;
+        return $result;
+    }
 }
 
 /*===================================================================================================================*/
@@ -62,7 +68,7 @@ for ($i = 0; $i < count($products); $i++) {
     $quantity = $products[$i]['quantity'];
 
 
-    $query = "INSERT INTO orderitem VALUES (" . $orderid . ", '" . $mid . "', " . $quantity .")";
+    $query = "INSERT INTO orderitem VALUES (" . $orderid . ", '" . $mid . "', " . $quantity . ")";
 
     $result = $mydb->query($query);
 
