@@ -21,14 +21,44 @@ if($_GET['username']) {
 
     $result = $mydb->query($query);
 
-    $respond = [];
-    
-    if($result->num_rows > 0)
-    {   
-        while ($row = $result->fetch_assoc()) {
-            array_push($respond, $row);
-        }
+    $respond = ["Done"=>$result];
+
+    if ($respond["Done"] == false)
+    {
+        echo json_encode($respond);
+        return;
     }
+
+
+    $query = "SELECT product.price, cartitem.quantity FROM product , cartitem WHERE cartitem.productid = product.mid AND cartitem.id = " . $usercartid;
+
+    $result = $mydb->query($query)->fetch_assoc();
+
+    if ($result == false)
+    {
+        $respond = ["Updated" => false];
+        echo json_encode($respond);
+        return;
+    }
+
+
+    $productPrice = $result['price'];
+    $productAmount = $result['quantity'];
+
+    $ttlPrice = $productAmount * $productPrice;
+
+
+    $query = "UPDATE cart SET currentprice = currentprice - " . $ttlPrice . " WHERE cart.id = " . $usercartid;
+
+    $result = $mydb->query($query);
+
+    if ($result == false)
+    {
+        $respond = ["Updated" => false];
+        echo json_encode($respond);
+        return;
+    }
+
 
 
     //echo $result;
@@ -36,8 +66,7 @@ if($_GET['username']) {
     $respond = json_encode($respond);
 
     echo $respond;
-
-    $mydb->freeResult();
+    
     $mydb->disconnect();
 
     return $respond;
