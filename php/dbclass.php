@@ -90,7 +90,7 @@ class Database
      
          while ($row = $result->fetch_assoc()) {
             array_push($respond, $row);
-            $wishlistid = $row['wishlist'];
+            $wishlistid = $row['wishlistid'];
          }
 
          return $wishlistid;

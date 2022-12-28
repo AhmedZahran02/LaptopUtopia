@@ -10,6 +10,7 @@ if($_GET['username']) {
     // not final and need update like wishlist
     $username = $_GET['username'];
     $amount = $_GET['amount'];
+    $price = $_GET['price'];
     $mid = $_GET['mid'];
 
     $mydb->connect();
@@ -23,7 +24,12 @@ if($_GET['username']) {
     $result = $mydb->query($query);
 
 
-    echo $result;
+
+    $cartid = $mydb->get_cartid_from_username($username);
+    $query = "UPDATE cart SET currentprice = " . $price . " Where id = " . $cartid; 
+
+    $result = $result && $mydb->query($query);
+
 
     $respond = json_encode($result);
 
