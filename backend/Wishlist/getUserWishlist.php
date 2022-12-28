@@ -11,8 +11,9 @@ if($_GET['username']) {
 
 
 
-    $query0 = "(select cartid from customer where username = '" . $username . "');";
-    $query = "select * from wishlist where id in " . $query0;
+    $query0 = "(select wishlistid from customer where username = '" . $username . "');";
+    $query = "select * from wishlistitem , product where product.mid = productid and id in " . $query0;
+
 
 
     $result = $mydb->query($query);

@@ -3,27 +3,27 @@ include '../../php/dbclass.php';
 $mydb = new Database();
 
 
-$wf = isset($_GET['workfield']) ? $_GET['workfield'] : 0;
+$wf = isset($_POST['workfield']) ? $_POST['workfield'] : 0;
 $query = '';
 switch ($wf) {
     case 0:
         $table = 'laptop';
-        $mid = $_GET['mid'];
-        $modelname = $_GET['modelname'];
-        $os = $_GET['os'];
-        $displaytype = $_GET['displaytype'];
-        $fingerprint = $_GET['fingerprint'];
-        $weight = $_GET['wheight'];
-        $webcam = $_GET['webcam'];
-        $webcamquality = $_GET['webcamquality'];
-        $displayhz = $_GET['displayhz'];
-        $batterycapacity = $_GET['ports'];
-        $ports = $_GET['ports'];
-        $touchscreen = $_GET['touchscreen'];
-        $cpuid = $_GET['cpuid'];
-        $gpuid = $_GET['gpuid'];
-        $storageid = $_GET['storageid'];
-        $ramid    = $_GET['ramid'];
+        $mid = $_POST['mid'];
+        $modelname = $_POST['modelname'];
+        $os = $_POST['os'];
+        $displaytype = $_POST['displaytype'];
+        $fingerprint = $_POST['fingerprint'];
+        $weight = $_POST['wheight'];
+        $webcam = $_POST['webcam'];
+        $webcamquality = $_POST['webcamquality'];
+        $displayhz = $_POST['displayhz'];
+        $batterycapacity = $_POST['ports'];
+        $ports = $_POST['ports'];
+        $touchscreen = $_POST['touchscreen'];
+        $cpuid = $_POST['cpuid'];
+        $gpuid = $_POST['gpuid'];
+        $storageid = $_POST['storageid'];
+        $ramid    = $_POST['ramid'];
 
         $query = "update laptop set " . "mid='" . $mid . "',modelname='" . $modelname . "',os='" . $os . "',displaytype='" . $displaytype .
             "',fingerprint=" . $fingerprint . ", weight=" . $weight .
@@ -34,14 +34,14 @@ switch ($wf) {
         break;
     case 1:
         $table = 'cpu';
-        $mid = $_GET['mid'];
-        $subbrand = $_GET['subbrand'];
-        $brandmodifier = $_GET['brandmodifier'];
-        $skunumber = $_GET['skunumber'];
-        $numberofcores = $_GET['numberofcores'];
-        $numberofthreads = $_GET['numberofthreads'];
-        $clockspeed = $_GET['clockspeed'];
-        $cache = $_GET['cache'];
+        $mid = $_POST['mid'];
+        $subbrand = $_POST['subbrand'];
+        $brandmodifier = $_POST['brandmodifier'];
+        $skunumber = $_POST['skunumber'];
+        $numberofcores = $_POST['numberofcores'];
+        $numberofthreads = $_POST['numberofthreads'];
+        $clockspeed = $_POST['clockspeed'];
+        $cache = $_POST['cache'];
 
         $query = "update cpu set " . "mid='" . $mid . "', subbrand='" . $subbrand . "', brandmodifier='" . $brandmodifier .
             "', skunumber='" . $skunumber . "', numberofcores=" . $numberofcores .
@@ -51,12 +51,12 @@ switch ($wf) {
         break;
     case 2:
         $table = 'gpu';
-        $mid = $_GET['mid'];
-        $subbrand = $_GET['subbrand'];
-        $brandmodifier = $_GET['brandmodifier'];
-        $skunumber = $_GET['skunumber'];
-        $vram = $_GET['vram'];
-        $generation = $_GET['generation'];
+        $mid = $_POST['mid'];
+        $subbrand = $_POST['subbrand'];
+        $brandmodifier = $_POST['brandmodifier'];
+        $skunumber = $_POST['skunumber'];
+        $vram = $_POST['vram'];
+        $generation = $_POST['generation'];
 
         $query = "update gpu set " . "mid='" . $mid . "',subbrand='" . $subbrand . "',brandmodifier='" . $brandmodifier .
             "',skunumber='" . $skunumber . "',generation='" . $generation .
@@ -66,11 +66,11 @@ switch ($wf) {
         break;
     case 3:
         $table = 'ram';
-        $mid = $_GET['mid'];
-        $generation = $_GET['generation'];
-        $writespeed = $_GET['writespeed'];
-        $reedspeed = $_GET['reedspeed'];
-        $capacity = $_GET['capaciry'];
+        $mid = $_POST['mid'];
+        $generation = $_POST['generation'];
+        $writespeed = $_POST['writespeed'];
+        $reedspeed = $_POST['reedspeed'];
+        $capacity = $_POST['capaciry'];
 
         $query = "update ram set " . "mid='" . $mid . "',generation='" . $generation . "',writespeed=" . $writespeed .
             ",reedspeed=" . $reedspeed . ",capacity=" . $capacity .
@@ -80,12 +80,12 @@ switch ($wf) {
         break;
     case 4:
         $table = 'storage';
-        $mid = $_GET['mid'];
-        $type = $_GET['type'];
-        $color = $_GET['color'];
-        $writespeed = $_GET['writespeed'];
-        $reedspeed = $_GET['reedspeed'];
-        $capacity = $_GET['capacity'];
+        $mid = $_POST['mid'];
+        $type = $_POST['type'];
+        $color = $_POST['color'];
+        $writespeed = $_POST['writespeed'];
+        $reedspeed = $_POST['reedspeed'];
+        $capacity = $_POST['capacity'];
         $query = "update storage set " . "mid='" . $mid . "',color='" . $color . "',type='" . $type . "',writespeed=" . $writespeed .
             ",reedspeed=" . $reedspeed . ",capacity=" . $capacity .
             " where mid ='" . $mid . "'";

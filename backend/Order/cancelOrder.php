@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $mydb->connect();
 
-    $query = "DELETE * FROM order WHERE id = ". $id . ";";
+    $query = "DELETE * FROM orders WHERE id = ". $id . ";";
     //echo $query;
     $result = $mydb->query($query);
 

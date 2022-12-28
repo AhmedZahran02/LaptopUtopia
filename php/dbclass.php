@@ -27,7 +27,7 @@ class Database
     {
         $this->database = $database;
     }
-    public  function __construct($userName = "root", $password = "", $hostName = "localhost", $database = "laptopia")
+    public  function __construct($userName = "laptopia", $password = "laptopia", $hostName = "db4free.net:3306", $database = "laptopia")
     {
         $this->setUserName($userName);
         $this->setPassword($password);
@@ -54,5 +54,45 @@ class Database
     public function disconnect()
     {
         mysqli_close($this->connect);
+    }
+
+    public function get_cartid_from_username($username)
+    {
+        $query0 = "select * from customer where username = '" . $username . "';";
+    
+        // echo $query0;
+     
+         $result = $this->query($query0);
+     
+         $respond = [];
+     
+         $cartid = "";
+     
+         while ($row = $result->fetch_assoc()) {
+             array_push($respond, $row);
+             $cartid = $row['cartid'];
+         }
+
+         return $cartid;
+    }
+
+    public function get_wishlistid_from_username($username)
+    {
+        $query0 = "select wishlistid from customer where username = '" . $username . "';";
+    
+        // echo $query0;
+     
+         $result = $this->query($query0);
+     
+         $respond = [];
+     
+         $wishlistid = "";
+     
+         while ($row = $result->fetch_assoc()) {
+            array_push($respond, $row);
+            $wishlistid = $row['wishlist'];
+         }
+
+         return $wishlistid;
     }
 }
