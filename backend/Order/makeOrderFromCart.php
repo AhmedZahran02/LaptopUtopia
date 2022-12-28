@@ -45,7 +45,7 @@ $ttlPrice = $result->fetch_assoc()['currentprice'];
 
 /*===================================================================================================================*/
 /** Inserting New Order */
-$query = "INSERT INTO orders VALUES (null,'" . $username . "'," . $ttlPrice . ",'" . date("Y-n-j") . "');";
+$query = "INSERT INTO orders VALUES (null,'" . $username . "'," . $ttlPrice . ",'" . date("Y-n-j") . "',0);";
 
 
 $result = $mydb->query($query);
@@ -73,6 +73,10 @@ for ($i = 0; $i < count($products); $i++) {
     $result = $mydb->query($query);
 
     $respond["Done"] = $respond["Done"] && $result;
+
+    $query = "UPDATE product SET quantity = quantity - " . $quantity . " WHERE mid = '" . $mid . "';";
+
+    $mydb->query($query);
 }
 
 
