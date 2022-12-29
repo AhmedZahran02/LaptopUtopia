@@ -11,20 +11,53 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $phone = $_POST['phone'];
 $dateofbirth = $_POST['dateofbirth'];
+$image = $_POST['image'];
+
+
+
+$mydb->connect();
+
+if ($_POST['isAdmin'] == 0) {
+    
+    
 $city = $_POST['city'];
 $street = $_POST['street'];
 $housenumber = $_POST['housenumber'];
-$cartid = $_POST['cartid'];
-$wishlistid = $_POST['wishlistid'];
-$startedworkat = $_POST['startedworkat'];
 
-if ($_POST['isAdmin'] == 0) {
+
+
+$query = "INSERT INTO cart VALUES (null,0,'". date("Y-n-j") ."')";
+
+$result = $mydb->query($query);
+
+$query = "SELECT last_insert_id()";
+
+$result = $mydb->query(($query));
+
+$cartid = $result->fetch_assoc()['last_insert_id()'];
+
+$query = "INSERT INTO wishlist VALUES (null,'". date("Y-n-j") ."')";
+
+$result = $mydb->query($query);
+
+$query = "SELECT last_insert_id()";
+
+$result = $mydb->query(($query));
+
+$wishlistid = $result->fetch_assoc()['last_insert_id()'];
+
+
+
+
+    
     $query = "insert into " . $table . " values " . "('" . $username . "',' " . $firstname . "','" . $lastname . "','" . $email . "','" . sha1($password) . "','" . $phone . "','" . $dateofbirth . "','" . $city . "','" . $street . "','" . $housenumber . "','" . $cartid . "','" . $wishlistid . "');";
 } else {
-    $query = "insert into " . $table . " values " . "('" . $username . "',' " . $firstname . "','" . $lastname . "','" . $email . "','" . sha1($password) . "','" . $phone . "','" . $dateofbirth . "','" . $startedworkat . "',0);";
+    
+$startedworkat = $_POST['startedworkat'];
+    
+    $query = "insert into " . $table . " values " . "('" . $username . "','" . $firstname . "','" . $lastname . "','" . $email . "','" . sha1($password) . "','" . $phone . "','" . $dateofbirth . "','" . $startedworkat . "',0,'".$image."')";
 }
 
-$mydb->connect();
 
 $result = $mydb->query($query);
 
@@ -34,7 +67,6 @@ if ($result == true) {
     $respond[0]["inserted"] = 1;
 }
 
-$mydb->freeResult();
 $mydb->disconnect();
 
 echo json_encode($respond);
