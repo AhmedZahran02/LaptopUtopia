@@ -152,7 +152,7 @@ switch ($wf) {
             array_push($respond['storagecapacity'], $row['capacity']);
         }
         //---
-
+        array_push($respond, ["Brand", "Display Model", "WebCam Quality", "OS", "Display HZ", "Battery Capacity", "CPU Brand", "CPU Name", "GPU Brand", "GPU Name", "RAM Brand", "RAM Capacity", "RAM Generation", "Storage Generation", "Storage Capacity"]);
         break;
     case 1:
         $query = "SELECT name FROM brand WHERE workfield = " . $wf . ";";
@@ -215,6 +215,7 @@ switch ($wf) {
             array_push($respond['cpuname'], $row['subbrand'] . ' ' . $row['brandmodifier'] . ' ' . $row['skunumber']);
         }
         //---
+        array_push($respond, ["Brand", "Number of Cores", "Number of Threads", "Clock Speed", "Cache", "CPU Name"]);
         break;
     case 2:
         $query = "SELECT name FROM brand WHERE workfield = " . $wf . ";";
@@ -261,6 +262,7 @@ switch ($wf) {
             array_push($respond['gpuname'], $row['subbrand'] . ' ' . $row['brandmodifier'] . ' ' . $row['skunumber']);
         }
         //---
+        array_push($respond, ["Brand", "Vram", "Generation", "GPU Name"]);
         break;
     case 3:
         $query = "SELECT name FROM brand WHERE workfield = " . $wf . ";";
@@ -303,6 +305,7 @@ switch ($wf) {
         while ($row = $result->fetch_assoc()) {
             array_push($respond['capacity'], $row['capacity']);
         }
+        array_push($respond, ["Brand", "Generation", "Write Speed", "Read Speed", "Capacity"]);
         break;
     case 4:
         $query = "SELECT name FROM brand WHERE workfield = " . $wf . ";";
@@ -353,6 +356,7 @@ switch ($wf) {
         while ($row = $result->fetch_assoc()) {
             array_push($respond['type'], $row['type']);
         }
+        array_push($respond, ["Brand", "Color", "Write Speed", "Read Speed", "Capacity", "Type"]);
         break;
     default:
         $respond[0]["Found"] = 0;
