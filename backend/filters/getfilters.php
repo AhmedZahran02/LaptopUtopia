@@ -152,7 +152,7 @@ switch ($wf) {
             array_push($respond['storagecapacity'], $row['capacity']);
         }
         //---
-        array_push($respond, ["Brand", "Display Model", "WebCam Quality", "OS", "Display HZ", "Battery Capacity", "CPU Brand", "CPU Name", "GPU Brand", "GPU Name", "RAM Brand", "RAM Capacity", "RAM Generation", "Storage Generation", "Storage Capacity"]);
+        array_push($respond, ["Brand", "Display Model", "WebCam Quality", "OS", "Display HZ", "Battery Capacity", "CPU Brand", "CPU Name", "GPU Brand", "GPU Name", "RAM Brand", "RAM Capacity", "RAM Generation", "Storage Generation", "Storage Brand", "Storage Capacity"]);
         break;
     case 1:
         $query = "SELECT name FROM brand WHERE workfield = " . $wf . ";";

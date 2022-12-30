@@ -18,6 +18,8 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['isAd
     while ($row = $result->fetch_assoc()) {
         $respond[0]["Found"] = 1;
         array_push($respond, $row);
+        $query = "insert into signinlog values(NULL,'" . $username . "',curdate());";
+        $mydb->query($query);
     }
 
     $mydb->freeResult();
