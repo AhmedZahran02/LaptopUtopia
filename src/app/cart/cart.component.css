@@ -1,0 +1,78 @@
+.offset
+{
+    background-color: #F4F5FA;
+    min-height: 93vh;
+}
+
+.productTitle h1
+{
+    color: black;
+    font-size: 20px;
+}
+
+.Amount
+{
+    background-color: white;
+    padding: 5px 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 5px;
+    box-shadow: -2px 1px 10px rgba(0,0,0,0.4);
+}
+
+.productImage
+{
+    height: 125px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.iconPos
+{
+    margin-top: 1.5rem!important;
+}
+
+.mycart
+{
+    text-align: center;
+    color: rgba(0,0,0,0.4);
+    font-size: 35px;
+}
+
+.radius
+{
+    border-radius: 6px;
+}
+
+.cartButtons
+{
+    /* background-color: white; */
+    padding: 10px;
+    margin-right: 15px;
+
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: -2px 1px 10px rgba(0,0,0,0.4);
+    border-radius: 10px;
+}
+
+
+.ttlPrice
+{
+    padding: 0px 20px;
+} 
+
+.ttlPrice h1
+{
+    font-size: 20px;
+}
+
+.alert
+{
+    border: 2px solid rgba(0,0,0,0.1);
+}
+
+.alert h1
+{
+    font-size: 17px;
+    text-align: center;
+
+}

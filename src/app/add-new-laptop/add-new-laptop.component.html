@@ -1,0 +1,342 @@
+<app-loading *ngIf="!CpuReceived || !GpuReceived || !RamReceived || !HardReceived"></app-loading>
+<!-- =========================== Laptop DATA ================================== -->
+<div class="container-fluid border p-4">
+    <div class="row">
+
+        <label class="floatingLabel">
+            Laptop Info
+        </label>
+
+
+
+
+        <!-- =========================================== model name ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Model</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="Model" #Model="ngModel"
+                    class="form-control" required minlength="2" maxlength="255" (input)="ValidateControl(0,Model)"
+                    [ngClass]="{'is-valid':Model.touched && validInput[0],
+                                'is-invalid': Model.touched && !validInput[0]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[0]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== displayType ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>display type</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[2]" ngModel name="displayType" #displayType="ngModel"
+                    class="form-control" required maxlength="50" (input)="ValidateControl(2,displayType)" [ngClass]="{'is-valid':displayType.touched && validInput[2],
+                                'is-invalid': displayType.touched && !validInput[2]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[2]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-12">
+            <div class="container-fluid">
+                <div class="row justify-content-between">
+                    <!-- =========================================== finger print ============================================================ -->
+                    <div style="border-radius: 10px;" class="col-3 border py-3 my-2">
+                        <div class="InputFieldContainer">
+
+                            <label>Finger Print</label>
+                            <br>
+                            <div class="outerCont w-50">
+                                <input type="radio" class="mr-1" name="hasFingerPrint" checked="true" value="1" ngModel
+                                    #hasFingerPrint="ngModel" [(ngModel)]="FieldsValue[3]"
+                                    (input)="ValidateControl(3,hasFingerPrint)">
+                                <label class="mr-1">Yes</label>
+                            </div>
+
+                            <div class="outerCont w-50">
+                                <input type="radio" class="mr-1" name="hasFingerPrint" value="0" ngModel
+                                    #hasFingerPrint="ngModel" [(ngModel)]="FieldsValue[3]"
+                                    (input)="ValidateControl(3,hasFingerPrint)">
+                                <label class="mr-1">No</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- =========================================== web cam ============================================================ -->
+                    <div style="border-radius: 10px;" class="col-3 border py-3 my-2">
+                        <div class="InputFieldContainer">
+
+                            <label>Webcam</label>
+                            <br>
+
+                            <div class="outerCont w-50">
+                                <input type="radio" class="mr-1" name="Webcam" checked="true" value="1" ngModel
+                                    #Webcam="ngModel" [(ngModel)]="FieldsValue[5]" (input)="ValidateControl(5,Webcam)">
+                                <label class="mr-1">Yes</label>
+                            </div>
+
+                            <div class="outerCont w-50">
+                                <input type="radio" class="mr-1" name="Webcam" value="0" ngModel #Webcam="ngModel"
+                                    [(ngModel)]="FieldsValue[5]" (input)="ValidateControl(5,Webcam)">
+                                <label class="mr-1">No</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <!-- =========================================== touchScreen ============================================================ -->
+                    <div style="border-radius: 10px;" class="col-3 border py-3 my-2">
+                        <div class="InputFieldContainer">
+
+                            <label>touchScreen</label>
+                            <br>
+
+                            <div class="outerCont w-50">
+                                <input type="radio" class="mr-1" name="touchScreen" checked="true" value="1" ngModel
+                                    #touchScreen="ngModel" [(ngModel)]="FieldsValue[10]"
+                                    (input)="ValidateControl(10,touchScreen)">
+                                <label class="mr-1">Yes</label>
+                            </div>
+                            <div class="outerCont w-50">
+                                <input type="radio" class="mr-1" name="touchScreen" value="0" ngModel
+                                    #touchScreen="ngModel" [(ngModel)]="FieldsValue[10]"
+                                    (input)="ValidateControl(10,touchScreen)">
+                                <label class="mr-1">No</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== Weight ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Weight</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[4]" ngModel name="weight" #weight="ngModel"
+                    class="form-control" required maxlength="50" (input)="ValidateControl(4,weight)" [ngClass]="{'is-valid':weight.touched && validInput[4],
+                                'is-invalid': weight.touched && !validInput[4]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[4]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== webcam Quality ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Webcam Quality</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[6]" ngModel name="webQuality" #webQuality="ngModel"
+                    class="form-control" (input)="ValidateControl(6,webQuality)" [ngClass]="{'is-valid':webQuality.touched && validInput[6],
+                                'is-invalid': webQuality.touched && !validInput[6]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[6]}}
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== displayHZ ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>display frequency</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[7]" ngModel name="displayhz" #displayhz="ngModel"
+                    class="form-control" required maxlength="60" (input)="ValidateControl(7,displayhz)" [ngClass]="{'is-valid':displayhz.touched && validInput[7],
+                                'is-invalid': displayhz.touched && !validInput[7]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[7]}}
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== batteryCap ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Battery Capacity</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[8]" ngModel name="batCap" #batCap="ngModel"
+                    class="form-control" required maxlength="60" (input)="ValidateControl(8,batCap)" [ngClass]="{'is-valid':batCap.touched && validInput[8],
+                                'is-invalid': batCap.touched && !validInput[8]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[8]}}
+                </div>
+            </div>
+        </div>
+        <!-- =========================================== os ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>os</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[1]" ngModel name="os" #os="ngModel" class="form-control"
+                    required minlength="2" maxlength="255" (input)="ValidateControl(1,os)" [ngClass]="{'is-valid':os.touched && validInput[1],
+                                'is-invalid': os.touched && !validInput[1]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[1]}}
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== Ports ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Ports</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[9]" ngModel name="ports" #ports="ngModel"
+                    class="form-control" required maxlength="60" (input)="ValidateControl(9,ports)" [ngClass]="{'is-valid':ports.touched && validInput[9],
+                                'is-invalid': ports.touched && !validInput[9]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[9]}}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =========================================== cpu ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <div class="col-12 p-0">
+                    <div class="InputFieldContainer">
+                        <label>CPU Name</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" (ngModelChange)="setAllValid()" id="inputGroupSelect01"
+                                [(ngModel)]="FieldsValue[11]">
+                                <option value="0" *ngIf="FieldsValue[11] == 0">none</option>
+                                <option *ngFor="let CPU of CPUS" [value]="CPU[0]">{{CPU[1]}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =========================================== gpu ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <div class="col-12 p-0">
+                    <div class="InputFieldContainer">
+                        <label>GPU Name</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" (ngModelChange)="setAllValid()" id="inputGroupSelect01"
+                                [(ngModel)]="FieldsValue[12]">
+                                <option value="0" *ngIf="FieldsValue[12] == 0">none</option>
+                                <option *ngFor="let GPU of GPUS" [value]="GPU[0]">{{GPU[1]}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =========================================== memory ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <div class="col-12 p-0">
+                    <div class="InputFieldContainer">
+                        <label>Memory Name</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" (ngModelChange)="setAllValid()" id="inputGroupSelect01"
+                                [(ngModel)]="FieldsValue[13]">
+                                <option value="0" *ngIf="FieldsValue[13] == 0">none</option>
+                                <option *ngFor="let Memory of Memories" [value]="Memory[0]">{{Memory[1]}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =========================================== storage ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <div class="col-12 p-0">
+                    <div class="InputFieldContainer">
+                        <label>Hard Disk Name</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" (ngModelChange)="setAllValid()" id="inputGroupSelect01"
+                                [(ngModel)]="FieldsValue[14]">
+                                <option value="0" *ngIf="FieldsValue[14] == 0">none</option>
+                                <option *ngFor="let storage of Storages" [value]="storage[0]">{{storage[1]}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

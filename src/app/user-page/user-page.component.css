@@ -1,0 +1,33 @@
+.wrapper
+{
+    background-color: #F4F5FA;
+    min-height: 93vh;
+    padding-top: 0.1px;
+}
+
+.HelloTitle h1
+{
+    font-size: 20px;
+    text-align: center;
+    margin: 50px 0px;
+}
+
+li
+{
+    flex: 1;
+}
+
+.username
+{
+    color: #D73D3D;
+}
+
+.contactus
+{
+    font-size: 20px;
+    text-align: center;
+}
+.comp
+{
+    resize: none;
+}

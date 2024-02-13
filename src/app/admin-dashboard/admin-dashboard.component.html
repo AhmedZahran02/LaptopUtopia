@@ -1,0 +1,36 @@
+<app-navbar [searchActive] = false></app-navbar>
+
+<div class="page">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 border-right mynav">
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-toggle="pill" data-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+                <button class="nav-link" id="v-pills-addProduct-tab" data-toggle="pill" data-target="#v-pills-addProduct" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Add Product</button>
+                <button class="nav-link" id="v-pills-addProduct-tab" data-toggle="pill" data-target="#v-pills-addBrand" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Add Brand</button>
+                <button class="nav-link" id="v-pills-viewProducts-tab" data-toggle="pill" data-target="#v-pills-viewProducts" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">View Products</button>
+                <button class="nav-link" id="v-pills-viewComplaints-tab" data-toggle="pill" data-target="#v-pills-viewBrands" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">View Brands</button>
+                <button class="nav-link" id="v-pills-viewOrders-tab" data-toggle="pill" data-target="#v-pills-viewOrders" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">View Orders</button>
+                <button class="nav-link" id="v-pills-viewComplaints-tab" data-toggle="pill" data-target="#v-pills-viewComplaints" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">View Complaints</button>
+                <button class="nav-link" id="v-pills-viewComplaints-tab" data-toggle="pill" data-target="#v-pills-addAdmin" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false" *ngIf ="owner == '1'">Add Admin</button>
+                <!-- add owner -->
+              </div>
+            </div>
+            <div class="col-lg-9 mynav">
+              <div class="tab-content" id="v-pills-tabContent overflow">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><app-admin-home></app-admin-home></div>
+                <div class="tab-pane fade" id="v-pills-addProduct" role="tabpanel" aria-labelledby="v-pills-profile-tab"><app-add-product></app-add-product></div>
+                <div class="tab-pane fade" id="v-pills-addBrand" role="tabpanel" aria-labelledby="v-pills-profile-tab"><app-add-new-brand></app-add-new-brand></div>
+                <div class="tab-pane fade" id="v-pills-viewProducts" role="tabpanel" aria-labelledby="v-pills-messages-tab"><app-view-products></app-view-products></div>
+                <div class="tab-pane fade" id="v-pills-viewOrders" role="tabpanel" aria-labelledby="v-pills-settings-tab"><app-view-orders></app-view-orders></div>
+                <div class="tab-pane fade" id="v-pills-viewComplaints" role="tabpanel" aria-labelledby="v-pills-settings-tab"><app-view-complaints></app-view-complaints></div>
+                <div class="tab-pane fade" id="v-pills-viewBrands" role="tabpanel" aria-labelledby="v-pills-settings-tab"><app-view-brands></app-view-brands></div>
+                <div class="tab-pane fade" id="v-pills-addAdmin" role="tabpanel" aria-labelledby="v-pills-settings-tab"><app-add-admin></app-add-admin></div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+
+</div>

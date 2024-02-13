@@ -1,0 +1,199 @@
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-12">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Admin Username</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="username" #username="ngModel"
+                        class="form-control" required minlength="5" maxlength="50" [ngClass]="{'is-valid': username.touched && validInput[0],
+                                  'is-invalid': username.touched && !validInput[0]}" (input)="ValidateControl(0,username)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[0]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">First Name</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[1]" ngModel name="firstname" #firstname="ngModel"
+                    class="form-control" required maxlength="50" [ngClass]="{'is-valid': firstname.touched && validInput[1],
+                                  'is-invalid': firstname.touched && !validInput[1]}" (input)="ValidateControl(1,firstname)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[1]}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Last Name</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[2]" ngModel name="lastname" #lastname="ngModel"
+                    class="form-control" required maxlength="50" [ngClass]="{'is-valid': lastname.touched && validInput[2],
+                                  'is-invalid': lastname.touched && !validInput[2]}" (input)="ValidateControl(2,lastname)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[2]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                </div>
+
+                <input type="email" [(ngModel)]="FieldsValue[3]" ngModel name="email" #email="ngModel"
+                    class="form-control" required maxlength="200" [ngClass]="{'is-valid': email.touched && validInput[3],
+                                  'is-invalid': email.touched && !validInput[3]}"
+                    (input)="ValidateControl(3,email)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[3]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Password</span>
+                </div>
+
+                <input type="password" [(ngModel)]="FieldsValue[4]" ngModel name="password" #password="ngModel"
+                    class="form-control" required minlength="8" maxlength="50" [ngClass]="{'is-valid': password.touched && validInput[4],
+                                  'is-invalid': password.touched && !validInput[4]}"
+                    (input)="ValidateControl(4,password)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[4]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Phone</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[5]" ngModel name="Phone" #Phone="ngModel" class="form-control"
+                    required minlength="11" maxlength="11" [ngClass]="{'is-valid': Phone.touched && validInput[5],
+                                  'is-invalid': Phone.touched && !validInput[5]}" (input)="ValidateControl(5,Phone)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[5]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
+                </div>
+
+                <input type="date" [(ngModel)]="FieldsValue[6]" ngModel name="DOB" #DOB="ngModel" class="form-control"
+                    required [ngClass]="{'is-valid': DOB.touched && validInput[6],
+                                  'is-invalid': DOB.touched && !validInput[6]}" (input)="ValidateControl(6,DOB)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[6]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Started At</span>
+                </div>
+
+                <input type="date" [(ngModel)]="FieldsValue[7]" ngModel name="SAT" #SAT="ngModel" class="form-control"
+                    required maxlength="500" [ngClass]="{'is-valid': SAT.touched && validInput[7],
+                                  'is-invalid': SAT.touched && !validInput[7]}" (input)="ValidateControl(7,SAT)">
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[7]}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Image</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[8]" ngModel name="SI4" #SI4="ngModel" class="form-control">
+            </div>
+            
+        </div>
+
+
+        <div class="col-12">
+
+            <button class="btn btn-success btn-block"  *ngIf="allValid" (click) = "AddAdmin()"> Submit </button>
+            <button class="btn btn-success btn-block" *ngIf="!allValid" disabled> Submit </button>
+
+        </div>
+
+
+
+    </div>
+</div>

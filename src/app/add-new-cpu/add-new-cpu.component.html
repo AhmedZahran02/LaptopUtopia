@@ -1,0 +1,168 @@
+<!-- =========================== CPU DATA ================================== -->
+<div class="container-fluid border p-4">
+    <div class="row">
+
+        <label class="floatingLabel">
+            Processor Info
+        </label>
+
+        
+
+
+        <!-- =========================================== sub brand ============================================================ -->
+        <div class="col-4">
+            <div class="InputFieldContainer">
+
+                <label>Sub Brand</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="subBrand" #subBrand="ngModel"
+                    class="form-control" required minlength="2" maxlength="255" (input)="ValidateControl(0,subBrand)"
+                    [ngClass]="{'is-valid':subBrand.touched && validInput[0],
+                                'is-invalid': subBrand.touched && !validInput[0]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[0]}}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =========================================== brand modifier ============================================================ -->
+        <div class="col-4">
+            <div class="InputFieldContainer">
+
+                <label>brand Modifier</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[1]" ngModel name="brandModifier" #brandModifier="ngModel"
+                    class="form-control" required maxlength="255"
+                    (input)="ValidateControl(1,brandModifier)" [ngClass]="{'is-valid':brandModifier.touched && validInput[1],
+                                'is-invalid': brandModifier.touched && !validInput[1]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[1]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== sku number ============================================================ -->
+        <div class="col-4">
+            <div class="InputFieldContainer">
+
+                <label>skuNumber</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[2]" ngModel name="skuNumber" #skuNumber="ngModel"
+                    class="form-control" required minlength="2" maxlength="50" (input)="ValidateControl(2,skuNumber)"
+                    [ngClass]="{'is-valid':skuNumber.touched && validInput[2],
+                                'is-invalid': skuNumber.touched && !validInput[2]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[2]}}
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== cores ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Number Of Cores</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[3]" ngModel name="cores" #cores="ngModel"
+                    class="form-control" required (input)="ValidateControl(3,cores)" [ngClass]="{'is-valid':cores.touched && validInput[3],
+                                'is-invalid': cores.touched && !validInput[3]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[3]}}
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== Threads ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Number Of Threads</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[4]" ngModel name="Threads" #Threads="ngModel"
+                    class="form-control" required (input)="ValidateControl(4,Threads)" [ngClass]="{'is-valid':Threads.touched && validInput[4],
+                                'is-invalid': Threads.touched && !validInput[4]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[4]}}
+                </div>
+            </div>
+        </div>
+        <!-- =========================================== Clock ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Clock Speed</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[5]" ngModel name="clock" #clock="ngModel"
+                    class="form-control" required minlength="5" maxlength="50" (input)="ValidateControl(5,clock)"
+                    [ngClass]="{'is-valid':clock.touched && validInput[5],
+                                'is-invalid': clock.touched && !validInput[5]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[5]}}
+                </div>
+            </div>
+        </div>
+        <!-- =========================================== Cache ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Cache</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[6]" ngModel name="Cache" #Cache="ngModel"
+                    class="form-control" required (input)="ValidateControl(6,Cache)" [ngClass]="{'is-valid':Cache.touched && validInput[6],
+                                'is-invalid': Cache.touched && !validInput[6]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[6]}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+

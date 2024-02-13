@@ -1,0 +1,31 @@
+
+.container
+{
+    padding: 20px;
+}
+
+.page
+{
+    min-height: 92vh;
+    background-color: white;
+    padding-top: 10px;
+    /* padding-left: 30px; */
+}
+
+.mynav,.overflow
+{
+    max-height: 88vh;
+    overflow-y: auto;
+}
+
+.mynav
+{
+    height: 88vh;
+}
+
+
+.overflow
+{
+    overflow-y: scroll;
+}
+

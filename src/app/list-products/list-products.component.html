@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+            <h1>
+                Current Stock
+            </h1>
+
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Amount</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of Products;">
+                        <td>{{product.title}}</td>
+                        <td>{{product.price}} LE</td>
+                        <td style="width: 120px !important;">{{product.amount}}</td>
+                        <td>
+                            <div class="container-fluid">
+                                <div class="row justify-content-end">
+                                    <div class="col-2">
+                                        <button class = "noStyle" style="color: rgb(90, 90, 219);"><fa-icon [icon] = "pencilIcon"></fa-icon></button>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class = "noStyle" style="color: red;"><fa-icon [icon] = "binIcon"></fa-icon></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

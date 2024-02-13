@@ -1,0 +1,162 @@
+<!-- <div class="navbar container-fluid" *ngIf="!isMobile" (window:resize)="checkCurrentDevice()">
+    <div class="row justify-content-between">
+  
+      <div class="col-1 text-center">
+        <div class="imageContainer ml-4">
+          <img src="../../assets/images/zahranLogo.jpeg" width="100%" height="100%">
+        </div>
+      </div>
+  
+      <div class="col-lg-7 col-md-8 d-block justify-content-around searchBar">
+        <div class="input-group mb-3 searchBarWidth m-auto">
+          <input type="text" class="form-control field-1" placeholder="what are you looking for ?">
+          <div class="input-group-append expand_width">
+            <button class="btn btn-primary searchBtn w-100" type="button">
+              <fa-icon [icon]="faGlass" class="fa-lg"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-3 col-md-2 d-flex justify-content-between ">
+  
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6 d-lg-block d-none">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-4 text-center">
+                    <fa-icon [icon]="faUser" class="fa-2x" [styles]="{'stroke': 'white', 'color': 'white'}"></fa-icon>
+                  </div>
+                  <div class="col-8 d-flex flex-wrap loginField">
+                    <div class="w-100">My Account</div>
+                    <div class="w-100">
+                      <a routerLink = "login" style="color: white;">Login</a>
+                      /
+                      <a routerLink = "register" class="specialA" style="color: white;">Register</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-6" role="button" (click) = "viewCart()">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-4 text-center">
+                    <fa-layers size="3x" class="cntCont">
+                      <fa-icon [icon]= "faCart" class = "fa-sm" style="color: white;"></fa-icon>
+                      <fa-layers-counter [content]="currentCartCapacity" class = "cartCnt"></fa-layers-counter>
+                    </fa-layers>
+                  </div>
+                  <div class="col-8 d-flex flex-wrap loginField">
+                    <div class="w-100">Cart</div>
+                    <div class="w-100 cartPrice">
+                      {{currentCartValue}} LE
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+  
+            </div>
+          </div>
+        </div>
+  
+  
+      </div>
+  
+  
+    </div>
+  
+  </div>
+  
+  
+  
+  <div class="mobile-navbar container-fluid" *ngIf="isMobile" (window:resize)="checkCurrentDevice()">
+    <div class="row justify-content-around">
+      <div class="col-2 searchButtonCont">
+        <button class="searchButton" (click)="toggleSearchBar()">
+          <fa-icon [icon]="faGlass" class="fa-xl"></fa-icon>
+        </button>
+      </div>
+  
+      <div class="col-6">
+        <div class="imageContainer text-center">
+          <img src="../assets/images/zahranLogo.jpeg" width="60%" height="80%">
+        </div>
+      </div>
+  
+      <div class="col-2">
+        <button class="btn btn-primary w-100">Log In</button>
+      </div>
+  
+    </div>
+  
+    <div class="searchBar  d-block justify-content-around" *ngIf="expandSearchBar">
+      <div class="input-group mb-3 w-100 m-auto">
+        <input type="text" class="form-control field-1" placeholder="what are you looking for ?">
+        <div class="input-group-append expand_width">
+          <button class="btn btn-primary searchBtn w-100" type="button">
+            <fa-icon [icon]="faGlass" class="fa-lg"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+<!--================ 21/12 =====================-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="logo">
+
+    <div class="imgContainer">
+      <img src="..//../assets/images/zahranLogo.png" width="100%" height="100%">
+    </div>
+
+    <a class="navbar-brand" routerLink="home">Laptopia</a>
+
+  </div>
+
+  <div class="collapse navbar-collapse w-75 justify-content-end" id="navbarSupportedContent">
+
+    <div class="form-inline input-group my-2 my-lg-0" *ngIf = "searchActive">
+      <input type="text" [(ngModel)] = "searchVal" class="form-control leftRadius">
+      <div class="input-group-append">
+        <button class="input-group-text rightRadius" (click) = "emit()"><fa-icon [icon]="faGlass"></fa-icon></button>
+      </div>
+    </div>
+
+    <div class="navs w-50">
+
+      <ul class="navbar-nav mr-auto justify-content-end">
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="loggedIn && !isAdmin" (click) = "showCart()"> <fa-icon class = "pr-1" [icon]="faCart"></fa-icon>Cart</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="loggedIn && !isAdmin" (click) = "showWishlist()"> <fa-icon class = "pr-1" [icon]="faWishlist"></fa-icon>Wishlist</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="!loggedIn" (click) = "showLogin()"> <fa-icon class = "pr-1" [icon]="faLogin"></fa-icon>Login</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="!loggedIn" (click) = "showRegister()"> <fa-icon class = "pr-1" [icon]="faRegister"></fa-icon>Register</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="loggedIn && !isAdmin" (click) = "showProfile()"> <fa-icon class = "pr-1" [icon]="faUser"></fa-icon>{{username}}</button>
+          <button class="nav-link" *ngIf="loggedIn && isAdmin"> <fa-icon class = "pr-1" [icon]="faUser"></fa-icon>{{username}}</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" *ngIf="loggedIn" (click) = "showLogout()"> <fa-icon class = "pr-1" [icon]="faLogout"></fa-icon>Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>

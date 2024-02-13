@@ -1,0 +1,232 @@
+
+.container
+{
+    width: 60%;
+    height: auto;
+
+    background-color: #fff;
+
+    position: absolute;
+    top: 20px;
+    left: 20%;
+
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    transform: scale(1);
+
+    /* animation: ScaleIn 2s ease-in-out 0.5s 0s 1 initial forwards; */
+
+    animation-name: ScaleIn;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out 0.5s;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.InputFieldContainer
+{
+    height: auto;
+}
+
+#waitForClick
+{
+    opacity: 0;
+    transition: all 1s;
+}
+
+#waitForClick:hover
+{
+    cursor: default;
+}
+
+table
+{
+    border-spacing: 200px;
+}
+
+.input-group-append
+{
+    width: 10%;
+}
+
+.input-group-append button
+{
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    background-color: #5AAAFF !important;
+}
+
+@keyframes ScaleIn {
+    0%
+    {
+        transform: scale(0.5);
+        left: 100%;
+    }
+    50%
+    {
+        left: 20%;
+        transform: scale(0.5);
+    }
+    100%
+    {
+        transform: scale(1);
+    }
+}
+
+@keyframes ScaleOut 
+{
+    0%
+    {
+        transform: scale(1);
+        left: 20%;
+    }
+    50%
+    {
+        left: 20%;
+        transform: scale(0.5);
+    }
+    100%
+    {
+        left: -100%;
+        transform: scale(0.5);
+    }
+}
+
+
+.bod
+{
+    width: 100%;
+    min-height: 100vh;
+    background-size: 100% 100%;
+    background-image: url(../../assets/images/gameStore.jpg);
+}
+
+@media (max-width: 600px) {
+    .container
+    {
+        width: 95%;
+        left: 10px;
+    }
+
+    .input-group-prepend
+    {
+        width: 80px !important;   
+    }
+
+    .input-group-prepend span
+    {
+        width: 100%;
+        font-size: 15px;
+        text-align: center !important;
+    }
+}
+
+.input-group-prepend
+{
+    width: 150px;
+}
+
+.input-group-prepend span
+{
+    width: 100%;
+    text-align: center !important;
+}
+
+.row
+{
+    height: 100%;
+    position: relative;
+}
+
+.floatingLabel
+{
+    position: absolute;
+    top: -37px;
+    background-color: white;
+}
+
+.row .col-12 h1
+{
+    margin: 20px 0px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.row .col-7 .input-group
+{
+    margin: 50px 0px;
+}
+
+
+.thead-dark th
+{
+    background-color: rgb(77, 77, 222) !important;
+}
+
+tr span
+{
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+tr span:hover
+{
+    cursor: pointer;
+}
+
+tr:hover span
+{
+    opacity: 1;
+}
+
+@media (max-width: 770px)
+{
+    .img
+    {
+        height: 200px;
+    }
+}
+
+h1
+{
+    margin: 50px 0px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.my-form-control
+{
+    border-color: #FF0000 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;
+}
+
+.my-form-control:focus {
+    border-color: #FF0000 !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;
+}
+
+.homePageIcon
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: #FF0000;
+    line-height: 50px;
+
+    border-radius: 30px;
+    top: 20px;
+    left: 20px;
+}
+
+

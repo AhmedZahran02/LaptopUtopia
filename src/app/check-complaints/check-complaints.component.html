@@ -1,0 +1,126 @@
+<app-loading *ngIf="!ComplaintsLoaded || !OrdersLoaded"></app-loading>
+
+
+
+<div class="container my-3 border" style="border-radius: 10px;">
+
+
+<div class="HelloTitle">
+    <h1>My Complaints</h1>
+</div>
+
+
+<div class="container-fluid" *ngIf = "ComplaintsLoaded && !noComplaints">
+    <div class="row border complaint p-4 mb-4"  style="background-color: white;" *ngFor = "let complaint of RepliedComplaints">
+        <div class="col-3 border-right">
+            <h1 style="display: inline; color: red;" class="mr-2"><fa-icon [icon] = "questionIcon"></fa-icon> </h1>
+            <p style="display: inline;">{{complaint.question}}</p>
+        </div>
+
+        <div class="col-7">
+            <h1 style="display: inline; color: green;">{{complaint.adminid}}: </h1>
+            <p style="display: inline;">{{complaint.anwser}}</p>
+        </div>
+    </div>    
+</div>
+
+<div class="container-fluid" *ngIf = "ComplaintsLoaded && noComplaints">
+  <div class="row border complaint p-4 mb-4"  style="background-color: white;">
+      <div class="col-12">
+        <h1 class="text-center">
+          No Complaints Was Replied Yet
+        </h1>
+      </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<div class="container my-3 border" style="border-radius: 10px;" *ngIf ="OrdersLoaded">
+    
+<div class="HelloTitle">
+    <h1>My Orders</h1>
+</div>
+
+
+<div class="container-fluid" *ngIf="!noOrders && OrdersLoaded">
+    <div class="row border complaint p-4 mb-4">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">View</th>
+                <th scope="col">Order#</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let order of userOrders">
+                <th scope="row"><fa-icon [icon] = "eyeIcon" role="button" (click) = "changeOrderItems(order.id)" data-toggle="modal" data-target="#orderItems"></fa-icon></th>
+                <th scope="row">{{order.id}}</th>
+                <td>{{order.creationdate}}</td>
+                <td>{{order.totalprice}}</td>
+                <td [style.color]="order.statusColor">{{order.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+<div class="container-fluid" *ngIf = "ComplaintsLoaded && noOrders">
+  <div class="row border complaint p-4 mb-4"  style="background-color: white;">
+      <div class="col-12">
+        <h1 class="text-center">
+          No Orders Was Made Yet
+        </h1>
+      </div>
+  </div>
+</div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="orderItems" tabindex="-1" aria-labelledby="orderItemsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderItemsLabel">Order #{{selectedOrder == -1 ? "NA" : selectedOrder}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Product #</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let item of OrderItems">
+                <th scope="row">{{item.mid}}</th>
+                <td>{{item.title}}</td>
+                <td>{{item.price}}</td>
+                <td>x{{item.quantity}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

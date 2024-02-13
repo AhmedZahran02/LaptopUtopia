@@ -1,0 +1,113 @@
+@font-face {
+    font-family: myFont;
+    src: url(../../assets/Fonts/Poppins-Regular.ttf);
+}
+
+.PageContainer {
+    /* margin-top: 86px; */
+    min-height: 100vh;
+}
+
+.productBody,
+.PageContainer {
+    background-color: white;
+}
+
+.PageContainer .mainImage {
+    height: 245px !important;
+}
+
+.PageContainer .miniImage {
+    height: 80px;
+    width: 80px !important;
+}
+
+
+.PageContainer .productBody {
+    padding-top: 15px;
+}
+
+.PageContainer .productBody h2 {
+    font-size: 18px;
+    font-family: myFont;
+    color: #AB0E19;
+
+}
+
+.PageContainer .productBody h2 .Val {
+    color: #666666;
+    font-size: 14px;
+}
+
+.PageContainer .productBody h1 {
+    font-family: myFont;
+    font-size: 22px;
+    margin: 0 0 10px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.PageContainer .productBody .btn-primary {
+    background-color: #AB0E19;
+    border-color: #AB0E19;
+    height: 40px;
+}
+
+.PageContainer .productBody .btn-primary:hover {
+    background-color: #cc1b27;
+}
+
+.leftCol {
+    background-color: #cc1b27;
+    width: 160px;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.rightCol {
+    background-color: #f8f9fa!important;
+    border-color: rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.setMinHeight {
+    min-height: 250px;
+}
+
+.btn-primary {
+    background-color: #AB0E19 !important;
+    border-color: #AB0E19 !important;
+}
+
+.btn-primary:focus,
+.btn-primary:hover {
+    background-color: #cc1b27 !important;
+    border-color: #cc1b27 !important;
+}
+
+
+@media (max-width:600px) {
+    .PageContainer .miniImage {
+        height: 50px;
+        width: 50px !important;
+    }
+
+    .PageContainer .productBody h1 {
+        font-family: myFont;
+        font-size: 15px;
+        margin: 0 0 10px;
+        font-weight: 500;
+        color: #444;
+        margin-bottom: 30px;
+    }
+
+    .btn-primary
+    {
+        padding: initial 0px !important;
+        font-size: 12px !important;
+    }
+    
+    .PageContainer {
+        /* margin-top: 65px; */
+    }
+}

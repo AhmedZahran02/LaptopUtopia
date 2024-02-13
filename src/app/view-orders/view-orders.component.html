@@ -1,0 +1,64 @@
+<app-loading *ngIf="!OrdersLoaded"></app-loading>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover text-center" style="font-weight: bold;">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>customer username</th>
+            <th>total price</th>
+            <th>Made At</th>
+            <th>status</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Order of Orders">
+            <td style="padding-top: 10px;">{{Order.id}}</td>
+            <td style="padding-top: 10px;">{{Order.customerusername}}</td>
+            <td style="padding-top: 10px;">{{Order.totalprice}}</td>
+            <td style="padding-top: 10px;">{{Order.creationdate}}</td>
+            <td style="padding-top: 10px;">{{Order.status}}</td>
+            <td style="padding-top: 10px;"><fa-icon [icon]="deleteIcon" style="color: red;" role="button"
+                (click)="cancelOrder(Order.id)"></fa-icon></td>
+            <td style="padding-top: 10px;"><fa-icon [icon]="penIcon" style="color: rgb(51, 51, 209);" role="button"
+                data-toggle="modal" data-target="#changeStat" (click) = "setSelected(Order.id)"></fa-icon></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="changeStat" tabindex="-1" aria-labelledby="changeStatLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeStatLabel">Update Order Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+          </div>
+          <select class="custom-select" [(ngModel)] = "status" id="inputGroupSelect01">
+            <option value="0">procceed</option>
+            <option value="1">shipped</option>
+            <option value="2">succeeded</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click) = "editOrder()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

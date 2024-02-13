@@ -1,0 +1,72 @@
+<app-loading *ngIf="!ComplaintsLoaded"></app-loading>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover text-center" style="font-weight: bold;">
+        <thead>
+          <tr>
+            <th>customer username</th>
+            <th>At</th>
+            <th>Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Complaint of Complaints">
+            <td style="padding-top: 10px;">{{Complaint.customerid}}</td>
+            <td style="padding-top: 10px;">{{Complaint.date}}</td>
+            <td style="padding-top: 10px;">{{Complaint.question}}</td>
+            <td style="padding-top: 10px;"> <button class="Reply" data-toggle="modal" data-target="#exampleModal2" (click) = "reply(Complaint)">reply
+                <fa-icon [icon]="replyIcon" role="button"></fa-icon></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-12">
+              <div class="InputFieldContainer">
+
+                <label>Your Answer</label>
+
+                <input type="text" rows="3" [(ngModel)]="Answer" ngModel name="subBrand" #subBrand="ngModel" class="form-control"
+                  required  
+                  [ngClass]="{'is-valid':subBrand.touched && Answer != '','is-invalid': subBrand.touched && Answer == ''}">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  You Should Add An Answer
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="SendAnswer()" *ngIf = "Answer != ''">Submit</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" disabled *ngIf = "Answer == ''">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="Answer = '' ">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

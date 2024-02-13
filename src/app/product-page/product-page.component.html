@@ -1,0 +1,154 @@
+<app-navbar></app-navbar>
+
+<app-loading *ngIf="!PageLoaded && !Submitting"></app-loading>
+
+<div class="PageContainer wow slideInLeft"  *ngIf = "PageLoaded">
+
+  <div class="container-fluid productBody py-4 border mb-2">
+    <div class="row">
+
+
+
+      <div class="col-md-4 productImage">
+        <div class="container-fluid">
+          <div class="row justify-content-around">
+            <div class="col-9 border mb-2">
+              <div class="mainImage"><img [src]="mainImage" width="100%" height="100%"></div>
+            </div>
+
+            <div class="col-12 d-flex flex-wrap justify-content-around">
+              <div class="miniImage border" *ngFor="let image of subImages;let i = index" (click)="swap(i,mainImage)"
+                role="button"><img [src]="image" width="100%" height="100%"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-8 productInfo border-left">
+        <div class="container-fluid">
+          <div class="row justify-content-around">
+            <div class="col-12">
+              <h1>{{Product.title}}</h1>
+            </div>
+            <div class="col-12 mb-1">
+              <h2>
+                <fa-icon [icon]="CoinsIcon"></fa-icon> {{Product.price}} LE
+              </h2>
+            </div>
+            <div class="col-12 mb-3 pb-2 border-bottom">
+              <h2>Stock : <span class="Val">{{Product.quantity == 0 ? "out of stock" : Product.quantity}}</span> </h2>
+            </div>
+            <div class="col-12 mb-1">
+              <h2>Brand : <span class="Val">{{Product["Brand Name"]}}</span> </h2>
+            </div>
+            <div class="col-12 mb-1">
+              <h2>Model : <span class="Val">{{Product["Model Name"]}}</span> </h2>
+            </div>
+            <div class="col-12 mb-2">
+              <h2>Viewed : <span class="Val">{{Product.Viewed}}</span> </h2>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="btn btn-primary btn-block" role="button" (click) = "addToCart()">
+                <fa-icon [icon]="cartIcon"></fa-icon> Add To Cart
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="btn btn-primary btn-block" style="background-color:black !important;" (click) = "addToWishlist()">
+                <fa-icon [icon]="heartIcon"></fa-icon> Add To Whishlist
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+              <div class="btn btn-primary btn-block">
+                <fa-icon [icon]="swapIcon"></fa-icon> Compare
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="Description-tab" data-toggle="tab" data-target="#Description"
+              type="button" role="tab" aria-controls="Description" aria-selected="true">Description</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="Reviews-tab" data-toggle="tab" data-target="#Reviews" type="button" role="tab"
+              aria-controls="Reviews" aria-selected="false">Reviews</button>
+          </li>
+        </ul>
+
+        <div class="tab-content setMinHeight" id="myTabContent">
+
+          <div class="tab-pane fade show active" id="Description" style="overflow: hidden;" role="tabpanel" aria-labelledby="Description-tab">
+            <table class="table table-dark w-100">
+              <tbody>
+                <tr *ngFor="let SubArr of DescriptionMap">
+                  <td class="border-right leftCol">{{SubArr[0]}}</td>
+                  <td class="rightCol">{{SubArr[1]}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tab-pane fade setMinHeight" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="card col-12 my-2" *ngFor = "let review of Reviews">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-3 col-6"><strong><fa-icon [icon] = "userIcon"></fa-icon> {{review.customerid}}</strong></div>
+                      <div class="col-md-9 col-6 text-right"><strong><fa-icon [icon] = "starIcon" style="color: rgb(228, 228, 0);"></fa-icon> {{review.rating}} </strong></div>
+                      <div class="col-12"><p>{{review.comment}}</p></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-12 mb-3">
+                  <label for="exampleFormControlTextarea1">Add Your Review</label>
+                  <textarea class="form-control" [(ngModel)] = "Comment" id="exampleFormControlTextarea1" rows="2" cols="100%" style="resize : none;"></textarea>
+                </div>
+
+                <div class="col-12 d-flex justify-content-around mb-3">
+                  <fa-icon role="button" (click) = "SelectedRating = 1;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 1) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 2;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 2) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 3;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 3) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 4;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 4) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 5;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 5) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 6;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 6) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 7;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 7) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 8;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 8) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 9;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 9) ? 'yellow' : 'black'"></fa-icon>
+                  <fa-icon role="button" (click) = "SelectedRating = 10;" size = "xl" [icon] = "starIcon" [style.color] = "(SelectedRating >= 10) ? 'yellow' : 'black'"></fa-icon>
+                </div>
+
+                <div class="col-12">
+                  <div class="btn btn-primary btn-block mb-4" (click) = "submitComment()">Submit</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

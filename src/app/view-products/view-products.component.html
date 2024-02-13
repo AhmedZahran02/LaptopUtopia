@@ -1,0 +1,291 @@
+<app-loading *ngIf="!ProductsLoaded"></app-loading>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+
+      <div class="InputFieldContainer">
+
+        <div class="InputFieldContainer text-center">
+          <label>work field</label>
+          <div class="input-group mb-3">
+            <select class="custom-select" id="inputGroupSelect01" (change)="getAllProducts()" [(ngModel)]="workField">
+              <option value="0">Laptop</option>
+              <option value="1">CPU</option>
+              <option value="2">GPU</option>
+              <option value="3">Ram</option>
+              <option value="4">Hard disk</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12">
+      <table class="table table-hover text-center" style="font-weight: bold;">
+        <thead>
+          <tr>
+            <th>MID</th>
+            <th style="width: 150px;">Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of Products; let i = index">
+            <td style="padding-top: 50px;">{{product.mid}}</td>
+            <th><img [src]="ProductImagesArr[i]" alt="" style="width: 100px; height: 100px; border-radius: 15px;"></th>
+            <td style="padding-top: 50px;">{{product.title}}</td>
+            <td style="padding-top: 50px;">{{product.price}}</td>
+            <td style="padding-top: 50px;">{{product.quantity}}</td>
+            <td style="padding-top: 50px;"><button type="button" class="btn btn-primary p-0"
+                (click)="editProduct(product)" style="background-color: transparent; border-color: transparent;"
+                data-toggle="modal" data-target="#exampleModal"><fa-icon [icon]="editIcon" style="color: #669CF6;"
+                  role="button"></fa-icon></button></td>
+            <td style="padding-top: 50px;"><fa-icon [icon]="deleteIcon" style="color: red;" role="button"
+                (click)="deleteProduct(product.mid)"></fa-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 850px; left: -130px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container-fluid">
+          <div class="row">
+
+
+            <div class="col-12">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Body</span>
+                </div>
+
+                <textarea type="text" [(ngModel)]="FieldsValue[0]" ngModel name="body" #body="ngModel"
+                  style="resize: none;" rows="4" class="form-control" required maxlength="500" [ngClass]="{'is-valid': body.touched && validInput[0],
+                                'is-invalid': body.touched && !validInput[0]}" (input)="ValidateControl(0,body)">
+
+                </textarea>
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[0]}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Title</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[1]" ngModel name="title" #title="ngModel"
+                  class="form-control" required maxlength="50" [ngClass]="{'is-valid': title.touched && validInput[1],
+                                'is-invalid': title.touched && !validInput[1]}" (input)="ValidateControl(1,title)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[1]}}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Price</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[2]" ngModel name="price" #price="ngModel"
+                  class="form-control" required maxlength="50" [ngClass]="{'is-valid': price.touched && validInput[2],
+                                'is-invalid': price.touched && !validInput[2]}" (input)="ValidateControl(2,price)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[2]}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Stock</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[3]" ngModel name="quantity" #quantity="ngModel"
+                  class="form-control" required maxlength="11" [ngClass]="{'is-valid': quantity.touched && validInput[3],
+                                'is-invalid': quantity.touched && !validInput[3]}"
+                  (input)="ValidateControl(3,quantity)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[3]}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Main Image</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[4]" ngModel name="mainImage" #mainImage="ngModel"
+                  class="form-control" required maxlength="500" [ngClass]="{'is-valid': mainImage.touched && validInput[4],
+                                'is-invalid': mainImage.touched && !validInput[4]}"
+                  (input)="ValidateControl(4,mainImage)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[4]}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Sub Image 1</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[5]" ngModel name="SI1" #SI1="ngModel" class="form-control"
+                  required maxlength="500" [ngClass]="{'is-valid': SI1.touched && validInput[5],
+                                'is-invalid': SI1.touched && !validInput[5]}" (input)="ValidateControl(5,SI1)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[5]}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Sub Image 2</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[6]" ngModel name="SI2" #SI2="ngModel" class="form-control"
+                  required maxlength="500" [ngClass]="{'is-valid': SI2.touched && validInput[6],
+                                'is-invalid': SI2.touched && !validInput[6]}" (input)="ValidateControl(6,SI2)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[6]}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Sub Image 3</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[7]" ngModel name="SI3" #SI3="ngModel" class="form-control"
+                  required maxlength="500" [ngClass]="{'is-valid': SI3.touched && validInput[7],
+                                'is-invalid': SI3.touched && !validInput[7]}" (input)="ValidateControl(7,SI3)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[7]}}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Sub Image 4</span>
+                </div>
+
+                <input type="text" [(ngModel)]="FieldsValue[8]" ngModel name="SI4" #SI4="ngModel" class="form-control"
+                  required maxlength="500" [ngClass]="{'is-valid': SI4.touched && validInput[8],
+                                'is-invalid': SI4.touched && !validInput[8]}" (input)="ValidateControl(8,SI4)">
+
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                  {{ErrMsg[8]}}
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12">
+
+              <button class="btn btn-success btn-block" (click) = "updateProduct()" *ngIf = "allValid"> Submit </button>
+              <button class="btn btn-success btn-block" *ngIf = "!allValid" disabled> Submit </button>
+
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

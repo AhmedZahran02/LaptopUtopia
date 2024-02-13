@@ -1,3 +1,0 @@
-; Add APIS IN THE FOLLOWING FORMAT
-
-; tableName_Function = url

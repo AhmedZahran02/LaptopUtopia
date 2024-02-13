@@ -1,0 +1,47 @@
+for Owl Carasouel ===>
+
+
+        in html : 
+                    <owl-carousel-o [options]="customOptions">
+                    <ng-container *ngFor="let slide of slides">
+                    <ng-template carouselSlide [id]="slide.id">
+                    <img [src]="slide.img" >
+                    </ng-template>
+                    </ng-container>
+                    </owl-carousel-o>   
+        
+        in TS : 
+                    customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
+
+  slides = [
+    { id: 1, img: "https://dummyimage.com/350x150/423b42/fff" },
+    { id: 2, img: "https://dummyimage.com/350x150/2a2b7a/fff" },
+    { id: 3, img: "https://dummyimage.com/350x150/1a2b7a/fff" },
+    { id: 4, img: "https://dummyimage.com/350x150/7a2b7a/fff" },
+    { id: 5, img: "https://dummyimage.com/350x150/9a2b7a/fff" },
+    { id: 6, img: "https://dummyimage.com/350x150/5a2b7a/fff" },
+    { id: 6, img: "https://dummyimage.com/350x150/4a2b7a/fff" }
+  ];

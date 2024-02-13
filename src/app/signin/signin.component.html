@@ -1,0 +1,101 @@
+<div class="bod"  style="position: relative;">
+
+    <div class="homePageIcon" role="button" (click) = "goHome()">
+        <fa-icon [icon] = "homeIcon" size = "xl"></fa-icon>
+    </div>
+
+    <div class="container" id="loginPage">
+        <div class="row">
+            <div class="col-12">
+                <h1>Log in to your account</h1>
+                <div class="InputFieldContainer">
+
+                    <label>
+                        <fa-icon [icon]="usernameIcon"></fa-icon> Username
+                    </label>
+
+                    <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="username" #username="ngModel"
+                        class="form-control" required maxlength="20" (input)="ValidateControl(0,username)" [ngClass]="{'is-valid':username.touched && validLogin[0],
+                                    'is-invalid': username.touched && !validLogin[0]}">
+
+
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+
+                    <div class="invalid-feedback">
+                        {{ErrMsg[0]}}
+                    </div>
+
+                </div>
+
+                <!-- ===================================================================================================================================================== -->
+
+                <div class="InputFieldContainer mb-2">
+
+                    <label for="validationServer01">
+                        <fa-icon [icon]="passwordIcon"></fa-icon> Password
+                    </label>
+
+                    <div class="input-group">
+
+                        <input [type]="!HidePassword ? 'password':'text'" [(ngModel)]="FieldsValue[1]" ngModel
+                            name="password" #password="ngModel" class="form-control" required minlength="8"
+                            maxlength="20" (input)="ValidateControl(1,password)" [ngClass]="{'is-valid':password.touched && validLogin[1],
+                                    'is-invalid': password.touched && !validLogin[1]}">
+                                    
+                        <div class="input-group-append">
+                            <button style="border:1px solid #ced4da;" class="w-100"
+                                *ngIf="!HidePassword" (click)="HidePassword = !HidePassword">
+                                <fa-icon [icon]="showPassword" size = 'md'></fa-icon>
+                            </button>
+                            <button style="border:1px solid #ced4da;" class="w-100"
+                                *ngIf="HidePassword" (click)="HidePassword = !HidePassword">
+                                <fa-icon [icon]="hidePassword" size = 'md'></fa-icon>
+                            </button>
+                        </div>
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            {{ErrMsg[1]}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ===================================================================================================================================================== -->
+
+
+                <button class="btn btn-primary btn-block" (click)="Login()" *ngIf="validLogin[0] && validLogin[1]">
+                    Sign In
+                </button>
+
+                <button class="btn btn-primary btn-block" *ngIf="!validLogin[0] || !validLogin[1]" disabled>
+                    Sign In
+                </button>
+
+                <small class="d-block text-center" *ngIf = "failedLogin" >
+                    login failed, make sure your username or password are correct
+                </small>
+
+                <div class="border mt-2">
+
+                </div>
+
+                <p class="text-center">
+                    don't have account ? <button (click)="TurnScreen()"
+                        style="background-color: transparent; border:none; color: cornflowerblue;">register
+                        here...</button>
+                </p>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>

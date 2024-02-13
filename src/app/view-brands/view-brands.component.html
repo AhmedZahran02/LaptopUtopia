@@ -1,0 +1,18 @@
+<app-loading *ngIf="!BrandsLoaded"></app-loading>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Brand Name</th>
+        <th>Work Field</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let brand of Brands">
+        <th>{{brand.name}}</th>
+        <td>{{brand.workField}}</td>
+        <td><fa-icon [icon] = "deleteIcon" style="color: red;" role="button" (click) = "deleteBrand(brand)"></fa-icon></td>
+      </tr>
+    </tbody>
+  </table>

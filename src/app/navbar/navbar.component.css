@@ -1,0 +1,197 @@
+
+
+*
+{
+    transition: all 0.5s;
+}
+/*
+
+.navbar,
+.mobile-navbar {
+    height: 86px;
+    margin-bottom: 20px;
+
+    margin-top: -1px;
+
+    position: fixed;
+    z-index: 999;
+    background-color: black;
+}
+
+.mobile-navbar {
+    padding: 0px !important;
+    margin: 0px !important;
+
+    height: auto;
+}
+
+.mobile-navbar .row {
+    margin: 0px;
+    gap: 10px;
+}
+
+.mobile-navbar .col-2 .btn {
+    line-height: 40px !important;
+    height: 40px;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+}
+
+
+.row {
+    width: 100%;
+    height: 64px;
+}
+
+.row * {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.searchButtonCont {
+    position: relative;
+}
+
+.searchButton {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: 10px;
+}
+
+.searchBar {
+    margin-top: 10px !important;
+    height: 50px !important;
+}
+
+.field-1
+{
+    padding-left: 10px !important;
+    border-radius: 0px;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+
+}
+
+.field-1:focus, .searchBtn:focus
+{
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.searchBtn:hover
+{
+    background-color: #FF5003;
+    border-color: #FF5003;
+}
+
+.searchBtn
+{
+    border-radius: 0px;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: #AB0E19 !important;
+    border-color: #AB0E19 !important;
+}
+
+
+
+.expand_width
+{
+    width: 70px !important;
+}
+
+.searchBarWidth
+{
+    width: 90%;
+}
+
+.loginField
+{    
+    /* line-height: 22px; 
+    font-size: 13px;
+    color: #888;
+}
+
+.loginField .w-100
+{
+    height: 20px;
+}
+
+.loginField a
+{
+    color: #222;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.loginField a:hover, .cartPrice
+{
+    text-decoration: none;
+    color: #AB0E19 !important;
+}
+
+.specialA:hover
+{
+    text-decoration: none;
+    color: #FF5003 !important;
+}
+
+.cntCont
+{
+    position: relative;
+}
+
+.cartCnt
+{
+    position: absolute;
+    top: 40px !important;
+}
+
+*/
+
+.logo
+{
+    display: flex;
+    width: 15% !important;
+}
+
+.leftRadius
+{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.rightRadius
+{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.imgContainer
+{
+    height: 40px;
+    width: 80px;
+    padding-right: 10px;
+}
+
+button.nav-link
+{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navs
+{
+    width: 60% !important;
+}

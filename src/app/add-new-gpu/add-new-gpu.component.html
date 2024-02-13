@@ -1,0 +1,130 @@
+<!-- =========================== CPU DATA ================================== -->
+<div class="container-fluid border p-4">
+    <div class="row">
+
+        <label class="floatingLabel">
+            Graphics Card Info
+        </label>
+
+        
+
+
+        <!-- =========================================== sub brand ============================================================ -->
+        <div class="col-4">
+            <div class="InputFieldContainer">
+
+                <label>Sub Brand</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="subBrand" #subBrand="ngModel"
+                    class="form-control" required minlength="2" maxlength="255" (input)="ValidateControl(0,subBrand)"
+                    [ngClass]="{'is-valid':subBrand.touched && validInput[0],
+                                'is-invalid': subBrand.touched && !validInput[0]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[0]}}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =========================================== brand modifier ============================================================ -->
+        <div class="col-4">
+            <div class="InputFieldContainer">
+
+                <label>brand Modifier</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[1]" ngModel name="brandModifier" #brandModifier="ngModel"
+                    class="form-control" required maxlength="255"
+                    (input)="ValidateControl(1,brandModifier)" [ngClass]="{'is-valid':brandModifier.touched && validInput[1],
+                                'is-invalid': brandModifier.touched && !validInput[1]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[1]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== sku number ============================================================ -->
+        <div class="col-4">
+            <div class="InputFieldContainer">
+
+                <label>skuNumber</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[2]" ngModel name="skuNumber" #skuNumber="ngModel"
+                    class="form-control" required minlength="2" maxlength="50" (input)="ValidateControl(2,skuNumber)"
+                    [ngClass]="{'is-valid':skuNumber.touched && validInput[2],
+                                'is-invalid': skuNumber.touched && !validInput[2]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[2]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== vram ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Vram</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[3]" ngModel name="vram" #vram="ngModel"
+                    class="form-control" required (input)="ValidateControl(3,vram)" [ngClass]="{'is-valid':vram.touched && validInput[3],
+                                'is-invalid': vram.touched && !validInput[3]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[3]}}
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== generation ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Generation</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[4]" ngModel name="Generation" #Generation="ngModel"
+                    class="form-control" required (input)="ValidateControl(4,Generation)" [ngClass]="{'is-valid':Generation.touched && validInput[4],
+                                'is-invalid': Generation.touched && !validInput[4]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[4]}}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+

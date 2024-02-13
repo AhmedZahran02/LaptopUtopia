@@ -1,0 +1,124 @@
+<!-- =========================== CPU DATA ================================== -->
+<div class="container-fluid border p-4">
+    <div class="row">
+
+        <label class="floatingLabel">
+            Ram Info
+        </label>
+
+    
+        <!-- =========================================== Type ============================================================ -->
+        <div class="col-12">
+            <div class="InputFieldContainer">
+
+                <label>Type</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="type" #type="ngModel"
+                    class="form-control" required minlength="2" maxlength="255" (input)="ValidateControl(0,type)"
+                    [ngClass]="{'is-valid':type.touched && validInput[0],
+                                'is-invalid': type.touched && !validInput[0]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[0]}}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =========================================== writeSpeed ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Write Speed</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[1]" ngModel name="writeSpeed" #writeSpeed="ngModel"
+                    class="form-control" required minlength="5" maxlength="255"
+                    (input)="ValidateControl(1,writeSpeed)" [ngClass]="{'is-valid':writeSpeed.touched && validInput[1],
+                                'is-invalid': writeSpeed.touched && !validInput[1]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[1]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== Read Speed ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Read Speed</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[2]" ngModel name="readSpeed" #readSpeed="ngModel"
+                    class="form-control" required minlength="2" maxlength="50" (input)="ValidateControl(2,readSpeed)"
+                    [ngClass]="{'is-valid':readSpeed.touched && validInput[2],
+                                'is-invalid': readSpeed.touched && !validInput[2]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[2]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== capacity ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>capacity</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[3]" ngModel name="capacity" #capacity="ngModel"
+                    class="form-control" required (input)="ValidateControl(3,capacity)" [ngClass]="{'is-valid':capacity.touched && validInput[3],
+                                'is-invalid': capacity.touched && !validInput[3]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[3]}}
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== color ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Color</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[4]" ngModel name="color" #color="ngModel"
+                    class="form-control" required (input)="ValidateControl(4,color)" [ngClass]="{'is-valid':color.touched && validInput[4],
+                                'is-invalid': color.touched && !validInput[4]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[4]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

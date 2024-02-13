@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+body
+{
+    overflow-x: hidden;
+    padding-top: 0.1px;
+}
+
+.h-100
+{
+    height: 100% !important;
+}
+
+.slick-slider {
+    width: 88%;
+    margin: auto;
+    background-color: white !important;
+  }
+  
+body .slick-prev, 
+body .slick-next {
+    height: 45px;
+    width: 40px;
+    z-index: 100;
+}
+
+body .slick-next::before,
+body .slick-prev::before
+{
+    color: #58a3da;
+}
+
+
+body
+{
+    background-image: url(./assets/images/techback.jpg);
+    background-size: 100%;
+    min-height: 100vh;   
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,15 @@
+.Reply
+{
+    background-color: transparent;
+    border: 1px solid #AB0E19;
+    color: #AB0E19;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all 0.5s;
+}
+
+.Reply:hover
+{
+    background-color: #ef101e;
+    color: black !important;
+}

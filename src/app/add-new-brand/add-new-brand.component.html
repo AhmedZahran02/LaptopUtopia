@@ -1,0 +1,52 @@
+<!-- =========================== CPU DATA ================================== -->
+<div class="container-fluid border p-4 mt-3">
+    <div class="row justify-content-end">
+
+        <label class="floatingLabel">
+            Adding New Brand
+        </label>
+
+        <!-- =========================================== Name ============================================================ -->
+        <div class="col-6">
+            <div class="InputFieldContainer">
+
+                <label>Name</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="Name" #Name="ngModel"
+                    class="form-control" required minlength="2" maxlength="255" (input)="ValidateControl(0,Name)"
+                    [ngClass]="{'is-valid':Name.touched && validInput[0],
+                                'is-invalid': Name.touched && !validInput[0]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[0]}}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =========================================== work field ============================================================ -->
+        <div class="col-6 p-0">
+            <div class="InputFieldContainer">
+                <label>work field</label>
+                <div class="input-group mb-3">
+                    <select class="custom-select" (ngModelChange) = "setAllValid()" id="inputGroupSelect01" [(ngModel)]="FieldsValue[1]">
+                        <option *ngFor="let workfield of Workfields" [value]="workfield.mid">{{workfield.title}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- =========================================== submit ============================================================ -->
+        <div class="col-2">
+            <button class="btn btn-primary btn-block" (click) = "submit()">Submit</button>
+        </div>
+
+    </div>
+
+
+</div>
+

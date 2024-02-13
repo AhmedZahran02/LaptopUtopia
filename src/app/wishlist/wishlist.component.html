@@ -1,0 +1,81 @@
+<app-navbar [searchActive]=false></app-navbar>
+
+
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="offset pt-1 pb-3">
+
+    <h1 class="mycart p-5"> <fa-icon [icon]="wishlistIcon"></fa-icon> My Wishlist</h1>
+
+    <div class="container wow slideInDown" *ngIf= "!loading && !emptyWishlist">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="container border radius mt-2" *ngFor="let product of Products">
+                    <div class="row">
+
+                        <div class="col-6 border-right p-4">
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-4 productImage" [style.background-image]="product.mainImage">
+                                    </div>
+                                    <div class="col-8 productTitle">
+                                        <h1 class="pt-5 text-center">
+                                            {{product.title}}
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-5 p-4 border-right">
+                            <div class="productTitle mt-5">
+                                <h1 class="text-center">
+                                    {{product.price}} LE
+                                </h1>
+                            </div>
+                        </div>
+
+                        <div class="col-1 text-center">
+                            <div class="pt-5 iconPos">
+                                <fa-icon class="mt-5" [icon]="deleteIcon" (click) = "deleteProduct(product.mid)" role="button" style="color: red;"></fa-icon>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 text-right ttlPrice mt-5">
+                <h1>
+                Total: {{totalPrice}} LE
+            </h1>
+            </div>
+
+            <div class="col-12 text-right mt-2 actions">
+
+                <button class = "cartButtons btn-danger" (click) = "clearWishlist()">
+                    Clear Wishlist
+                </button>
+
+                <button class = "cartButtons btn-success" (click) = "AddToCart()">
+                    Add To My Cart
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container alert border wow fadeInLeft" *ngIf= "!loading && emptyWishlist">
+        <h1>
+            You Don't Have Any Thing In Your Wishlist Yet
+        </h1>
+    </div>
+
+</div>

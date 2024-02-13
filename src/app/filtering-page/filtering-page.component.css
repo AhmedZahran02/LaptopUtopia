@@ -1,0 +1,127 @@
+#reload
+{
+    display: block;
+}
+
+.Filters
+{
+    background-color: #F8F9FA;
+    transition: all 1s;
+}
+
+.itemTitle
+{
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.itemPrice
+{
+    color: #AB0E19;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+
+.Filters h1
+{
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.myCard p
+{
+    min-height: 50%;
+}
+
+.noStyle
+{
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
+
+    height: 50px;
+    width: 40%;
+}
+
+.Test
+{
+    display: none;
+    opacity: 0;
+    animation-name: popAway;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out 0.1s;
+}
+
+
+@keyframes popUp {
+    0%{
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes popAway {
+    0%{
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
+}
+
+.numberItem
+{
+    width: 40px;
+}
+
+.Tag 
+{
+    color: black;
+    padding: 0px;
+}
+
+.Extend:hover
+{
+    cursor: pointer;
+}
+
+
+@media (max-width:600px) {
+    .myCard
+    {
+        text-align: center;
+    }
+
+    .myCard h1
+    {
+        font-size: 18px;
+    }
+
+    .myCard p
+    {
+        font-size: 12px;
+        min-height: 20%;
+    }
+}
+
+
+.minHeight
+{
+    min-height: 100vh;   
+}
+
+.ImageContainer
+{
+    padding: 0px;
+    padding-right: 15px;
+    border-right: 2px solid rgba(0, 0, 0, 0.1);
+}

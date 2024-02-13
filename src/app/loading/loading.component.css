@@ -1,0 +1,25 @@
+.loadingwrapper
+{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding-top: 48vh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
+}
+
+#dot1
+{
+    animation-delay: 0.5s;
+}
+#dot2
+{
+    animation-delay: 1s;
+}
+#dot3
+{
+    animation-delay: 1.5s;
+}

@@ -1,0 +1,303 @@
+<app-loading *ngIf="!BrandsReceived"></app-loading>
+
+
+<div class="page">
+
+    <input type="text" value="editingProduct?.mid" disabled style="display: none;" (change) = "updateEditing()">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <!-- =========================== ProductData ================================== -->
+                        <div class="container-fluid border p-4 mb-5">
+                            <div class="row">
+
+                                <label class="floatingLabel">
+                                    Product Info
+                                </label>
+
+                                <!-- =========================================== type ============================================================ -->
+                                <div class="col-lg-12">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Manufacturer's ID</label>
+
+                                        <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="MID"
+                                            #MID="ngModel" class="form-control" required minlength="5" maxlength="50"
+                                            (input)="ValidateControl(0,MID)" [ngClass]="{'is-valid':MID.touched && validInput[0],
+                                'is-invalid': MID.touched && !validInput[0]}" [value]="FieldsValue[0]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[0]}}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- =========================================== brand ============================================================ -->
+                                <div class="col-lg-6">
+                                    <div class="InputFieldContainer">
+
+                                        <div class="col-lg-12 p-0">
+                                            <div class="InputFieldContainer">
+                                                <label>brand name</label>
+                                                <div class="input-group mb-3">
+                                                    <select class="custom-select" id="inputGroupSelect01"
+                                                        [(ngModel)]="FieldsValue[10]"  [value]="FieldsValue[10]">
+                                                        <option *ngFor = "let brand of brands"  [value]="brand">{{brand}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- =========================================== work field ============================================================ -->
+                                <div class="col-lg-6">
+                                    <div class="InputFieldContainer">
+
+                                        <div class="InputFieldContainer">
+                                            <label>work field</label>
+                                            <div class="input-group mb-3">
+                                                <select class="custom-select" id="inputGroupSelect01" (change) = "revalidate()"
+                                                    [(ngModel)]="FieldsValue[11]"  [value]="FieldsValue[11]">
+                                                    <option value="0">Laptop</option>
+                                                    <option value="1">CPU</option>
+                                                    <option value="2">GPU</option>
+                                                    <option value="3">Ram</option>
+                                                    <option value="4">Hard disk</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                                <!-- =========================================== Title ============================================================ -->
+                                <div class="col-lg-6">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Title</label>
+
+                                        <input type="text" [(ngModel)]="FieldsValue[1]" ngModel name="Title"
+                                            #Title="ngModel" class="form-control" required minlength="2" maxlength="50"
+                                            (input)="ValidateControl(1,Title)" [ngClass]="{'is-valid':Title.touched && validInput[1],
+                                'is-invalid': Title.touched && !validInput[1]}" [value]="FieldsValue[1]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[1]}}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- =========================================== Price ============================================================ -->
+                                <div class="col-lg-6">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Price</label>
+
+                                        <input type="number" [(ngModel)]="FieldsValue[2]" ngModel name="price"
+                                            #price="ngModel" class="form-control" required
+                                            (input)="ValidateControl(2,price)" [ngClass]="{'is-valid':price.touched && validInput[2],
+                                'is-invalid': price.touched && !validInput[2]}"  [value]="FieldsValue[2]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[2]}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- =========================================== Body ============================================================ -->
+                                <div class="col-lg-12 mb-3">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Description</label>
+
+                                        <textarea type="text" [(ngModel)]="FieldsValue[3]" ngModel name="Description"
+                                            #Description="ngModel" class="form-control"  [value]="FieldsValue[3]"
+                                            (input)="ValidateControl(3,Description)" [ngClass]="{'is-valid':Description.touched && validInput[3],
+                                'is-invalid': Description.touched && !validInput[3]}" rows="5"></textarea>
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[3]}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =========================================== Amount ============================================================ -->
+                                <div class="col-lg-3">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Amount</label>
+
+                                        <input type="number" [(ngModel)]="FieldsValue[4]" ngModel name="Amount"
+                                            #Amount="ngModel" class="form-control" maxlength="255" required
+                                            (input)="ValidateControl(4,Amount)" [ngClass]="{'is-valid':Amount.touched && validInput[4],
+                                'is-invalid': Amount.touched && !validInput[4]}"  [value]="FieldsValue[4]"> 
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[4]}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =========================================== Main Image ============================================================ -->
+                                <div class="col-lg-12">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Main Image URL</label>
+
+                                        <input type="text" [(ngModel)]="FieldsValue[5]" ngModel name="mainImage"
+                                            #mainImage="ngModel" class="form-control" required
+                                            (input)="ValidateControl(5,mainImage)" [ngClass]="{'is-valid':mainImage.touched && validInput[5],
+                                'is-invalid': mainImage.touched && !validInput[5]}" [value]="FieldsValue[5]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[5]}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =========================================== sub Image 1 ============================================================ -->
+                                <div class="col-lg-3">
+                                    <div class="InputFieldContainer">
+
+                                        <label>first SubImage URL</label>
+
+                                        <input type="text" [(ngModel)]="FieldsValue[6]" ngModel name="sImage1"
+                                            #sImage1="ngModel" class="form-control" (input)="ValidateControl(6,sImage1)"
+                                            [ngClass]="{'is-valid':sImage1.touched && validInput[6],
+                                'is-invalid': sImage1.touched && !validInput[6]}" [value]="FieldsValue[6]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[6]}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =========================================== sub Image 2 ============================================================ -->
+                                <div class="col-lg-3">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Second SubImage URL</label>
+
+                                        <input type="text" [(ngModel)]="FieldsValue[7]" ngModel name="sImage2"
+                                            #sImage2="ngModel" class="form-control" (input)="ValidateControl(7,sImage2)"
+                                            [ngClass]="{'is-valid':sImage2.touched && validInput[7],
+                                'is-invalid': sImage2.touched && !validInput[7]}"  [value]="FieldsValue[7]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[7]}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =========================================== sub Image 3 ============================================================ -->
+                                <div class="col-lg-3">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Third SubImage URL</label>
+
+                                        <input type="text" [(ngModel)]="FieldsValue[8]" ngModel name="sImage3"
+                                            #sImage3="ngModel" class="form-control" (input)="ValidateControl(8,sImage3)"
+                                            [ngClass]="{'is-valid':sImage3.touched && validInput[8],
+                                'is-invalid': sImage3.touched && !validInput[8]}" [value]="FieldsValue[8]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[8]}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =========================================== sub Image 4 ============================================================ -->
+                                <div class="col-lg-3">
+                                    <div class="InputFieldContainer">
+
+                                        <label>Forth SubImage URL</label>
+
+                                        <input type="text" [(ngModel)]="FieldsValue[9]" ngModel name="sImage4"
+                                            #sImage4="ngModel" class="form-control" (input)="ValidateControl(9,sImage4)"
+                                            [ngClass]="{'is-valid':sImage4.touched && validInput[9],
+                                'is-invalid': sImage4.touched && !validInput[9]}" [value]="FieldsValue[9]">
+
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+
+                                        <div class="invalid-feedback">
+                                            {{ErrMsg[9]}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-12 p-0" *ngIf="FieldsValue[11] == 0"><app-add-new-laptop (sender) = "receive($event)" [subLaptop] = "this.subLaptop"></app-add-new-laptop></div>
+                        <div class="col-12 p-0" *ngIf="FieldsValue[11] == 1"><app-add-new-cpu (sender) = "receive($event)" [subCPU] = "this.subCPU"></app-add-new-cpu></div>
+                        <div class="col-12 p-0" *ngIf="FieldsValue[11] == 2"><app-add-new-gpu (sender) = "receive($event)" [subGPU] = "this.subGPU"></app-add-new-gpu></div>
+                        <div class="col-12 p-0" *ngIf="FieldsValue[11] == 3"><app-add-new-memory (sender) = "receive($event)" [subRam] = "this.subRam"></app-add-new-memory></div>
+                        <div class="col-12 p-0" *ngIf="FieldsValue[11] == 4"><app-add-new-storage (sender) = "receive($event)" [subDrive] = "this.subDrive"></app-add-new-storage></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- =========================== Submition ================================== -->
+    <div class="col-12 p-0 mt-4">
+        <button class="btn btn-primary btn-block mb-4" (click)="submit()" *ngIf="allValid && received">Submit</button>
+        <button class="btn btn-primary btn-block mb-4" disabled *ngIf="!allValid || !received">Submit</button>
+    </div>
+
+</div>

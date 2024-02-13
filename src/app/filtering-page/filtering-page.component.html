@@ -1,0 +1,119 @@
+<app-navbar [searchActive] = "true" (searchKey) = "receive($event)"></app-navbar>
+
+
+<app-loading *ngIf="!pageLoaded || !productLoaded"></app-loading>
+
+<div class="container-fluid Page">
+
+    <div class="row minHeight" *ngIf = "pageLoaded && productLoaded">
+
+        <div class="col-md-3 Filters">
+            <div class="container-fluid" >
+                <div class="row h-100" *ngFor="let Filter of Filters; let i = index">
+                    <div class="col-12">
+
+                        <div class="container-fluid Tag">
+                            <div class="row">
+                                <div class="col-1 mt-3" (click)="HideDropDown(i)">
+                                    <fa-icon [icon]="plusIcon" class="Extend" style="color: #ab0e19;"></fa-icon>
+                                </div>
+                                <div class="col-10">
+                                    <h1>{{Filters[i].display}}</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 Test" style="padding-left: 45px;" [id]="i">
+                        <ul *ngFor="let filter of Filters[i].filters; let j = index"
+                            style="list-style: none; color: black;">
+                            <li><input type="checkbox" class="mr-2" [(ngModel)]="FiltersSelected[i][j]">{{filter}}</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="row justify-content-between">
+                    <div class="col-5 p-0">
+                        <button class="btn btn-block btn-primary" (click) = "filterProducts()">Filter</button>
+                    </div>
+            
+                    <div class="col-5 p-0">
+                        <button class="btn btn-block btn-secondary" (click) = "resetSelections()">reset</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="col-md-9" style="background-color: white;">
+
+            <div class="myCard w-100">
+
+                <div class="wow fadeInDown container-fluid my-5 border p-3"
+                    *ngFor="let product of viewProducts;let i = index">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="ImageContainer w-100" style="min-height: 268px !important;">
+                                <img [src]="mainImages[i]" width="100%" height="100%">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <a class="itemTitle" role="button" (click)="loadProduct(product.mid)">
+                                {{product.title}}
+                            </a>
+
+                            <h1 class="itemPrice">
+                                {{product.price}}
+                            </h1>
+
+                            <p>
+                                {{product.body}}
+                            </p>
+
+                            <div class="IconsContainer d-flex justify-content-around">
+
+                                <button class="noStyle" style="background-color: #AB0E19 !important;" (click) = "addToCart(product.mid)" *ngIf = "loggedIn"><fa-icon
+                                        [icon]="cartIcon" size="xl"></fa-icon></button>
+
+                                <button class="noStyle" style="background-color: #370609 !important;" disabled *ngIf="!loggedIn"><fa-icon
+                                        [icon]="cartIcon" size="xl"></fa-icon></button>
+
+                                <button class="noStyle" style="background-color: red !important;" *ngIf="loggedIn" (click) = "addToWishlist(product.mid)"><fa-icon
+                                        [icon]="whishlistIcon" size="xl"></fa-icon></button>
+
+                                <button class="noStyle" style="background-color: rgb(47, 4, 4) !important;" disabled *ngIf="!loggedIn"><fa-icon
+                                        [icon]="whishlistIcon" size="xl"></fa-icon></button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item mr-2" [ngClass]="{'disabled': !PrevActive}">
+                            <button class="page-link" *ngIf="PrevActive" (click)="ChangePage(-1)">Previous</button>
+                            <button class="page-link" *ngIf="!PrevActive" disabled>Previous</button>
+                        </li>
+                        <li class="page-item numberItem" *ngFor="let x of TempArray; let i = index"><button
+                                class="page-link" *ngIf="i < 11" (click)="ChangeCurrentProduct(x - 1)">{{x}}</button>
+                        </li>
+                        <li class="page-item" [ngClass]="{'disabled': !NextActive}">
+                            <button class="page-link" *ngIf="NextActive" href="#" (click)="ChangePage(1)">Next</button>
+                            <button class="page-link" *ngIf="!NextActive" href="#" disabled>Next</button>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<!-- =========================== CPU DATA ================================== -->
+<div class="container-fluid border p-4">
+    <div class="row">
+
+        <label class="floatingLabel">
+            Ram Info
+        </label>
+
+        
+
+
+        <!-- =========================================== Generation ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Generation</label>
+
+                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="generation" #generation="ngModel"
+                    class="form-control" required minlength="2" maxlength="255" (input)="ValidateControl(0,generation)"
+                    [ngClass]="{'is-valid':generation.touched && validInput[0],
+                                'is-invalid': generation.touched && !validInput[0]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[0]}}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =========================================== writeSpeed ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Write Speed</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[1]" ngModel name="writeSpeed" #writeSpeed="ngModel"
+                    class="form-control" required minlength="5" maxlength="255"
+                    (input)="ValidateControl(1,writeSpeed)" [ngClass]="{'is-valid':writeSpeed.touched && validInput[1],
+                                'is-invalid': writeSpeed.touched && !validInput[1]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[1]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== sku number ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>Read Speed</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[2]" ngModel name="readSpeed" #readSpeed="ngModel"
+                    class="form-control" required minlength="2" maxlength="50" (input)="ValidateControl(2,readSpeed)"
+                    [ngClass]="{'is-valid':readSpeed.touched && validInput[2],
+                                'is-invalid': readSpeed.touched && !validInput[2]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[2]}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- =========================================== capacity ============================================================ -->
+        <div class="col-3">
+            <div class="InputFieldContainer">
+
+                <label>capacity</label>
+
+                <input type="number" [(ngModel)]="FieldsValue[3]" ngModel name="capacity" #capacity="ngModel"
+                    class="form-control" required (input)="ValidateControl(3,capacity)" [ngClass]="{'is-valid':capacity.touched && validInput[3],
+                                'is-invalid': capacity.touched && !validInput[3]}">
+
+
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="invalid-feedback">
+                    {{ErrMsg[3]}}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+

@@ -1,0 +1,312 @@
+<div class="bod"  style="position: relative;">
+    <div class="homePageIcon" role="button" (click) = "goHome()">
+        <fa-icon [icon] = "homeIcon" size = "xl"></fa-icon>
+    </div>
+    <div class="container border" id="RegisterPage">
+        <div class="row">
+            <div class="col-12 pt-1">
+
+                <h1>
+                    Sign Up For Free
+                </h1>
+
+                <div class="container-fluid p-0">
+                    <div class="row">
+
+                        <!-- =========================== First Name ================================== -->
+                        <div class="col-lg-4">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="nameIcon"></fa-icon> First Name
+                                </label>
+
+                                <input type="text" [(ngModel)]="FieldsValue[0]" ngModel name="firstName"
+                                    #firstName="ngModel" class="form-control" required minlength="3" maxlength="10"
+                                    (input)="ValidateControl(0,firstName)" [ngClass]="{'is-valid':firstName.touched && validInput[0],
+                                                'is-invalid': firstName.touched && !validInput[0]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[0]}}
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- =========================== Second Name ================================== -->
+                        <div class="col-lg-8">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="nameIcon"></fa-icon> Last Name
+                                </label>
+
+                                <input type="text" [(ngModel)]="FieldsValue[1]" ngModel name="lastName"
+                                    #lastName="ngModel" class="form-control" required minlength="3" maxlength="20"
+                                    (input)="ValidateControl(1,lastName)" [ngClass]="{'is-valid':lastName.touched && validInput[1],
+                                                'is-invalid': lastName.touched && !validInput[1]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[1]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== Email ================================== -->
+                        <div class="col-12">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="emailIcon"></fa-icon> Email
+                                </label>
+
+                                <input type="text" [(ngModel)]="FieldsValue[2]" ngModel name="email" #email="ngModel"
+                                    class="form-control" required minlength="8" maxlength="50"
+                                    (input)="validateEmail(); ValidateControl(2,email)" [ngClass]="{'is-valid':email.touched && validInput[2],
+                                                'is-invalid': email.touched && !validInput[2]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[2]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== Username ================================== -->
+                        <div class="col-12">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="usernameIcon"></fa-icon> Username
+                                </label>
+
+                                <input type="text" [(ngModel)]="FieldsValue[3]" ngModel name="username"
+                                    #username="ngModel" class="form-control" required minlength="5" maxlength="50"
+                                    (input)="ValidateControl(3,username)" [ngClass]="{'is-valid':username.touched && validInput[3],
+                                                'is-invalid': username.touched && !validInput[3]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[3]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== Password ================================== -->
+                        <div class="col-lg-6">
+                            <label for="validationServer01">
+                                <fa-icon [icon]="passwordIcon"></fa-icon> Password
+                            </label>
+
+                            <div class="input-group">
+
+                                <input [type]="!HidePassword ? 'password':'text'" [(ngModel)]="FieldsValue[4]" ngModel
+                                    name="password" #password="ngModel" class="form-control" required
+                                    (click)="DisplayPasswordConstraints()" minlength="8" maxlength="20"
+                                    (input)="validatePassword(); ValidateControl(4,password)" [ngClass]="{'is-valid':password.touched && validInput[4],
+                                                'is-invalid': password.touched && !validInput[4]}">
+
+                                <div class="input-group-append">
+                                    <button style="border:1px solid #ced4da;" class="w-100" *ngIf="!HidePassword"
+                                        (click)="HidePassword = !HidePassword">
+                                        <fa-icon [icon]="showPassword" size='md'></fa-icon>
+                                    </button>
+                                    <button style="border:1px solid #ced4da;" class="w-100" *ngIf="HidePassword"
+                                        (click)="HidePassword = !HidePassword">
+                                        <fa-icon [icon]="hidePassword" size='md'></fa-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" id="waitForClick">
+                            <table>
+                                <tr class="justify-content-between"
+                                    [style.color]="passwordConstraints[0] ? 'green' : 'red'">
+                                    <td width="20px">
+                                        <fa-icon [icon]="passwordConstraints[0] ? correctSign : wrongSign">
+                                        </fa-icon>
+                                    </td>
+                                    <td>password must be at lease 8 characters</td>
+                                </tr>
+                                <tr class="justify-content-between"
+                                    [style.color]="passwordConstraints[1] ? 'green' : 'red'">
+                                    <td width="20px">
+                                        <fa-icon [icon]="passwordConstraints[1] ? correctSign : wrongSign">
+                                        </fa-icon>
+                                    </td>
+                                    <td>password must contain at least one Number</td>
+                                </tr>
+                                <tr class="justify-content-between"
+                                    [style.color]="passwordConstraints[2] ? 'green' : 'red'">
+                                    <td width="20px">
+                                        <fa-icon [icon]="passwordConstraints[2] ? correctSign : wrongSign">
+                                        </fa-icon>
+                                    </td>
+                                    <td>password must contain a special character</td>
+                                </tr>
+                                <tr class="justify-content-between"
+                                    [style.color]="passwordConstraints[3] ? 'green' : 'red'">
+                                    <td width="20px">
+                                        <fa-icon [icon]="passwordConstraints[3] ? correctSign : wrongSign">
+                                        </fa-icon>
+                                    </td>
+                                    <td>password must contain at least one capital letter</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- =========================== Phone ================================== -->
+                        <div class="col-3">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="phoneIcon"></fa-icon> Phone
+                                </label>
+
+                                <input type="tel" [(ngModel)]="FieldsValue[5]" ngModel name="Phone" id="Phone"
+                                    #Phone="ngModel" class="form-control" required maxlength="11"
+                                    (input)="validatePhone(); ValidateControl(5,Phone)" [ngClass]="{'is-valid':Phone.touched && validInput[5],
+                                                'is-invalid': Phone.touched && !validInput[5]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[5]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== City ================================== -->
+                        <div class="col-2">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="cityIcon"></fa-icon> City
+                                </label>
+
+                                <input type="tel" [(ngModel)]="FieldsValue[6]" ngModel name="City" id="City"
+                                    #City="ngModel" class="form-control" required maxlength="11"
+                                    (input)="ValidateControl(6,City)" [ngClass]="{'is-valid':City.touched && validInput[6],
+                                                'is-invalid': City.touched && !validInput[6]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[6]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== Street ================================== -->
+                        <div class="col-4">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="streetIcon"></fa-icon> Street
+                                </label>
+
+                                <input type="tel" [(ngModel)]="FieldsValue[7]" ngModel name="Street" id="Street"
+                                    #Street="ngModel" class="form-control" required maxlength="11"
+                                    (input)="ValidateControl(7,Street)" [ngClass]="{'is-valid':Street.touched && validInput[7],
+                                                'is-invalid': Street.touched && !validInput[7]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[7]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== House Number ================================== -->
+                        <div class="col-3">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="houseIcon"></fa-icon> House Number
+                                </label>
+
+                                <input type="tel" [(ngModel)]="FieldsValue[8]" ngModel name="HouseNumber" id="HouseNumber"
+                                    #HouseNumber="ngModel" class="form-control" required maxlength="11"
+                                    (input)="ValidateControl(8,HouseNumber)" [ngClass]="{'is-valid':HouseNumber.touched && validInput[8],
+                                                'is-invalid': HouseNumber.touched && !validInput[8]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[8]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== Date Of Birth ================================== -->
+                        <div class="col-3">
+                            <div class="InputFieldContainer">
+
+                                <label>
+                                    <fa-icon [icon]="houseIcon"></fa-icon> Date Of Birth
+                                </label>
+
+                                <input type="date" [(ngModel)]="FieldsValue[9]" ngModel name="DOB" id="DOB"
+                                    #DOB="ngModel" class="form-control" required
+                                    (input)="ValidateControl(9,DOB)" [ngClass]="{'is-valid':DOB.touched && validInput[9],
+                                                'is-invalid': DOB.touched && !validInput[9]}">
+
+
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+
+                                <div class="invalid-feedback">
+                                    {{ErrMsg[9]}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =========================== Submition ================================== -->
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-block mb-4" (click)="submit()" *ngIf="allValid">Submit</button>
+                            <button class="btn btn-primary btn-block mb-4" disabled *ngIf="!allValid">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-12 mb-3">
+                    <div class="border"></div>
+
+                    <div class="already text-center my-2">
+                        Already Have Account ? <button
+                            style="background-color: transparent; border: none; color: cornflowerblue;"
+                            (click)="navigateLogin()"> Login Here </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
